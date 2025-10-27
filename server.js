@@ -10,6 +10,8 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const app = express();
+
+// ✅ Gunakan PORT dari environment (Vercel pakai dinamis) atau fallback ke 7550
 const port = process.env.PORT || 7550;
 
 // ✅ Firebase Admin Initialization
@@ -25,11 +27,12 @@ try {
     token_uri: "https://oauth2.googleapis.com/token",
   };
 
-  admin.initializeApp({
-    credential: admin.credential.cert(serviceAccount),
-  });
-
-  console.log("✅ Firebase Admin initialized successfully!");
+  if (!admin.apps.length) {
+    admin.initializeApp({
+      credential: admin.credential.cert(serviceAccount),
+    });
+    console.log("✅ Firebase Admin initialized successfully!");
+  }
 } catch (error) {
   console.error("⚠️ Firebase Admin initialization failed:", error.message);
 }
@@ -38,8 +41,8 @@ try {
 app.use(express.json());
 app.use(express.static(path.join(__dirname, "public")));
 
-// ✅ Example API route (cek koneksi Firebase)
-app.get("/test-firebase", async (req, res) => {
+// ✅ Example API route
+app.get("/api/test", async (req, res) => {
   try {
     const db = admin.firestore();
     const snapshot = await db.collection("test").get();
@@ -52,12 +55,17 @@ app.get("/test-firebase", async (req, res) => {
   }
 });
 
-// ✅ Serve main HTML
+// ✅ Serve index.html
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "index.html"));
 });
 
-// ✅ Start server
-app.listen(port, () => {
-  console.log(`🚀 Server running at http://localhost:${port}`);
-});
+// ✅ Start server (hanya untuk lokal, Vercel handle otomatis)
+if (process.env.NODE_ENV !== "production") {
+  app.listen(port, () => {
+    console.log(`🚀 Server running locally at http://localhost:${port}`);
+  });
+}
+
+// ✅ Export Express app untuk Vercel
+export default app;
