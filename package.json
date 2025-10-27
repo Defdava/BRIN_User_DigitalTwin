@@ -1,0 +1,12 @@
+{
+  "name": "digital-twin-website",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "dotenv": "^17.2.3",
+    "express": "^4.18.2",
+    "firebase-admin": "^13.5.0"
+  }
+}
