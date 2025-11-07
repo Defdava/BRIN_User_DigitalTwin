@@ -2,20 +2,36 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
     <title>BRIN Login</title>
-    <link rel="icon" type="image/x-icon" href="https://github.com/Defdava/Digital-Twin-Website_user/blob/6e7fbc84b4b4ba7fae0470f3313d9cef8f47b8f5/logo-brin.png?raw=true">
+    <link rel="icon" type="image/x-icon" href="https://github.com/Defdava/BRIN_Operator_DigitalTwin/blob/main/public/logo-brin.png?raw=true">
     <style>
+        :root {
+            --primary-blue: #1D3354;
+            --accent-red: #D64045;
+            --text-color: #FFFFFF;
+            --white-bg: #E9FFF9;
+            --input-bg: rgba(255, 255, 255, 0.9);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background: #d3d3d3; /* Latar belakang abu-abu untuk layar utama */
-            color: #333;
+            color: var(--text-color);
             overflow-x: hidden;
+            background: #d3d3d3;
+            min-height: 100vh;
+            position: relative;
         }
 
         body::before {
@@ -26,16 +42,30 @@
             width: 100%;
             height: 100%;
             background-size: cover;
-            background-position: center center;
+            background-position: center;
             background-repeat: no-repeat;
-            z-index: -1; /* Agar background di belakang konten */
-            animation: slideshow 20s infinite; /* 5 images × 4 seconds = 20 seconds */
+            z-index: -1;
+            opacity: 0.2;
+            animation: slideshow 25s infinite;
+        }
+
+        @keyframes slideshow {
+            0%, 15%   { background-image: url('https://github.com/Defdava/Digital-Twin-Website-used/blob/main/fotobrin1.jpg?raw=true'); opacity: 0.2; }
+            20%       { opacity: 0; }
+            20.01%, 35% { background-image: url('https://github.com/Defdava/Digital-Twin-Website-used/blob/main/fotobrin3.jpg?raw=true'); opacity: 0.2; }
+            40%       { opacity: 0; }
+            40.01%, 55% { background-image: url('https://github.com/Defdava/Digital-Twin-Website-used/blob/main/fotobrin2.jpg?raw=true'); opacity: 0.2; }
+            60%       { opacity: 0; }
+            60.01%, 75% { background-image: url('https://github.com/Defdava/Digital-Twin-Website-used/blob/main/fotobrin4.jpg?raw=true'); opacity: 0.2; }
+            80%       { opacity: 0; }
+            80.01%, 95% { background-image: url('https://github.com/Defdava/Digital-Twin-Website-used/blob/main/fotobrin.jpg?raw=true'); opacity: 0.2; }
+            100%      { opacity: 0; }
         }
 
         header {
-            background-image: linear-gradient(to right, lightseagreen, palevioletred);
+            background-color: var(--primary-blue);
             color: white;
-            padding: 10px 20px;
+            padding: 15px 30px;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -43,7 +73,7 @@
             width: 100%;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
         }
 
         .logo {
@@ -53,165 +83,157 @@
         }
 
         .logo img {
-            height: 40px;
-            vertical-align: middle;
+            height: 50px;
         }
 
         .logo span {
-            margin-left: 10px;
-            font-size: 16px;
+            margin-left: 15px;
+            font-size: 20px;
             font-weight: bold;
         }
 
-        .header-right {
-            display: flex;
-            align-items: center;
-        }
-
         .header-right span {
-            margin-right: 20px;
-            font-size: 14px;
+            font-size: 18px;
+            margin-right: 30px;
         }
 
         .login-container {
             display: flex;
-            flex-direction: column; /* Stack elements vertically */
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
+            padding: 90px 20px 40px;
             background: rgba(0, 0, 0, 0.5);
-            padding-top: 80px; /* Menyesuaikan dengan header */
         }
 
         .welcome-message {
-            color: whitesmoke; /* Match login-box h2 color */
-            font-size: 24px; /* Prominent but not overpowering */
+            color: white;
+            font-size: 24px;
             font-weight: bold;
             text-align: center;
-            margin-bottom: 20px; /* Space between welcome message and login box */
-            width: 300px; /* Match login-box width for alignment */
+            margin-bottom: 20px;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
         }
 
         .login-box {
-            background-color: rgba(89, 158, 163, 0.4); /* 20% opacity white background */
-            padding: 20px;
-            border-radius: 10px;
-            width: 300px;
+            background-color: rgba(89, 158, 163, 0.4);
+            padding: 25px;
+            border-radius: 12px;
+            width: 100%;
+            max-width: 340px;
             text-align: center;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            border: 2px solid var(--accent-red);
         }
 
         .login-box h2 {
-            margin-top: 0;
-            color: whitesmoke;
-            font-size: 20px;
+            margin: 0 0 20px;
+            color: white;
+            font-size: 22px;
+            font-weight: bold;
         }
 
         .login-box input {
             width: 100%;
-            padding: 10px;
+            padding: 12px;
             margin: 10px 0;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            box-sizing: border-box;
+            border: 2px solid var(--accent-red);
+            border-radius: 6px;
+            background-color: var(--input-bg);
+            color: #333;
             font-size: 14px;
-            background-color: rgba(255, 255, 255, 1); /* Opaque background for readability */
+            box-sizing: border-box;
+            transition: all 0.3s;
+        }
+
+        .login-box input::placeholder {
+            color: #666;
+        }
+
+        .login-box input:focus {
+            outline: none;
+            border-color: white;
+            box-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
+            background-color: white;
         }
 
         .login-box button {
             width: 100%;
-            padding: 10px;
-            background-image: linear-gradient(to bottom, lightseagreen, palevioletred); /* Opaque for readability */
+            padding: 12px;
+            background-color: var(--accent-red);
             color: white;
             border: none;
-            border-radius: 5px;
+            border-radius: 6px;
             cursor: pointer;
-            font-size: 14px;
+            font-size: 16px;
+            font-weight: bold;
+            margin: 15px 0 10px;
+            transition: background-color 0.3s;
+        }
+
+        .login-box button:hover {
+            background-color: #b8323a;
         }
 
         .login-box a {
             display: block;
-            margin: 10px 0;
-            color: whitesmoke; /* Changed to whitesmoke for better contrast */
+            margin: 8px 0;
+            color: white;
             text-decoration: none;
-            font-size: 12px;
+            font-size: 13px;
+            transition: color 0.3s;
         }
 
-        @keyframes slideshow {
-            0% {
-                background-image: url('https://github.com/Defdava/Digital-Twin-Website-used/blob/e93ccec33c490658c360964197ea2bc52b9ec83a/fotobrin1.jpg?raw=true');
-                opacity: 0.2;
-            }
-            15% {
-                background-image: url('https://github.com/Defdava/Digital-Twin-Website-used/blob/e93ccec33c490658c360964197ea2bc52b9ec83a/fotobrin1.jpg?raw=true');
-                opacity: 0.2;
-            }
-            20% {
-                background-image: url('https://github.com/Defdava/Digital-Twin-Website-used/blob/e93ccec33c490658c360964197ea2bc52b9ec83a/fotobrin1.jpg?raw=true');
-                opacity: 0; /* Fade out */
-            }
-            20.01% {
-                background-image: url('https://github.com/Defdava/Digital-Twin-Website-used/blob/e93ccec33c490658c360964197ea2bc52b9ec83a/fotobrin3.jpg?raw=true');
-                opacity: 0; /* Start faded out */
-            }
-            35% {
-                background-image: url('https://github.com/Defdava/Digital-Twin-Website-used/blob/e93ccec33c490658c360964197ea2bc52b9ec83a/fotobrin3.jpg?raw=true');
-                opacity: 0.2;
-            }
-            40% {
-                background-image: url('https://github.com/Defdava/Digital-Twin-Website-used/blob/e93ccec33c490658c360964197ea2bc52b9ec83a/fotobrin3.jpg?raw=true');
-                opacity: 0;
-            }
-            40.01% {
-                background-image: url('https://github.com/Defdava/Digital-Twin-Website-used/blob/e93ccec33c490658c360964197ea2bc52b9ec83a/fotobrin2.jpg?raw=true');
-                opacity: 0;
-            }
-            55% {
-                background-image: url('https://github.com/Defdava/Digital-Twin-Website-used/blob/e93ccec33c490658c360964197ea2bc52b9ec83a/fotobrin2.jpg?raw=true');
-                opacity: 0.2;
-            }
-            60% {
-                background-image: url('https://github.com/Defdava/Digital-Twin-Website-used/blob/e93ccec33c490658c360964197ea2bc52b9ec83a/fotobrin2.jpg?raw=true');
-                opacity: 0;
-            }
-            60.01% {
-                background-image: url('https://github.com/Defdava/Digital-Twin-Website-used/blob/e93ccec33c490658c360964197ea2bc52b9ec83a/fotobrin4.jpg?raw=true');
-                opacity: 0;
-            }
-            75% {
-                background-image: url('https://github.com/Defdava/Digital-Twin-Website-used/blob/e93ccec33c490658c360964197ea2bc52b9ec83a/fotobrin4.jpg?raw=true');
-                opacity: 0.2;
-            }
-            80% {
-                background-image: url('https://github.com/Defdava/Digital-Twin-Website-used/blob/e93ccec33c490658c360964197ea2bc52b9ec83a/fotobrin4.jpg?raw=true');
-                opacity: 0;
-            }
-            80.01% {
-                background-image: url('https://github.com/Defdava/Digital-Twin-Website-used/blob/e93ccec33c490658c360964197ea2bc52b9ec83a/fotobrin.jpg?raw=true');
-                opacity: 0;
-            }
-            95% {
-                background-image: url('https://github.com/Defdava/Digital-Twin-Website-used/blob/e93ccec33c490658c360964197ea2bc52b9ec83a/fotobrin.jpg?raw=true');
-                opacity: 0.2;
-            }
-            100% {
-                background-image: url('https://github.com/Defdava/Digital-Twin-Website-used/blob/e93ccec33c490658c360964197ea2bc52b9ec83a/fotobrin.jpg?raw=true');
-                opacity: 0;
-            }
+        .login-box a:hover {
+            color: #ffcccc;
+            text-decoration: underline;
+        }
+
+        #error-message {
+            position: fixed;
+            top: 80px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(214, 64, 69, 0.9);
+            color: white;
+            padding: 10px 16px;
+            border-radius: 6px;
+            font-size: 14px;
+            z-index: 1001;
+            display: none;
+            max-width: 90%;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            header { padding: 10px 15px; }
+            .logo img { height: 30px; }
+            .logo span { font-size: 14px; margin-left: 8px; }
+            .header-right span { font-size: 12px; margin-right: 10px; }
+            .welcome-message { font-size: 16px; margin-bottom: 15px; }
+            .login-box { padding: 15px; max-width: 300px; }
+            .login-box h2 { font-size: 18px; }
+            .login-box input, .login-box button { padding: 10px; font-size: 13px; }
+            .login-box a { font-size: 12px; }
+            #error-message { top: 60px; font-size: 12px; padding: 8px 12px; }
         }
     </style>
 </head>
 <body>
+    <div id="error-message"></div>
+
     <header>
         <div class="logo">
-            <img alt="Logo_BRIN.png" src="hpublic/brin_logo.png?raw=true">
+            <img src="https://github.com/Defdava/BRIN_Operator_DigitalTwin/blob/46a20c237c763bc2ccd436c332785427771eea05/public/brin_logo.png?raw=true" alt="BRIN Logo">
             <span>BRIN</span>
-            <span>Badan Riset Nasional</span>
+            <span>Badan Riset dan Inovasi Nasional</span>
         </div>
         <div class="header-right">
             <span>Parking Management System</span>
         </div>
     </header>
+
     <div class="login-container">
         <div class="welcome-message">Welcome to BRIN Parking System</div>
         <div class="login-box">
@@ -225,13 +247,15 @@
             </form>
         </div>
     </div>
+
     <script>
         class User {
-            constructor(username, email, password, idWorker) {
+            constructor(username, email, password, idWorker, profilePic = '/assets/user.JPG') {
                 this.username = username;
                 this.email = email;
                 this.password = password;
                 this.idWorker = idWorker;
+                this.profilePic = profilePic;
             }
         }
 
@@ -242,9 +266,7 @@
 
             register(username, email, password, idWorker) {
                 const userExists = this.users.some(user => user.email === email);
-                if (userExists) {
-                    throw new Error('User already exists!');
-                }
+                if (userExists) throw new Error('User already exists!');
                 const user = new User(username, email, password, idWorker);
                 this.users.push(user);
                 localStorage.setItem('users', JSON.stringify(this.users));
@@ -253,53 +275,59 @@
 
             login(email, password) {
                 const user = this.users.find(u => u.email === email && u.password === password);
-                if (user) {
-                    return user;
-                }
-                throw new Error('Invalid email or password!');
+                if (!user) throw new Error('Invalid email or password!');
+                return user;
             }
         }
 
         const auth = new AuthSystem();
 
+        // Show Error
+        function showError(message) {
+            const el = document.getElementById('error-message');
+            el.textContent = message;
+            el.style.display = 'block';
+            setTimeout(() => el.style.display = 'none', 5000);
+        }
+
         document.addEventListener('DOMContentLoaded', () => {
-            // Redirect to login if no user session
+            // Redirect if already logged in
             if (localStorage.getItem('currentUser')) {
                 window.location.replace('index.html');
                 return;
             }
 
-            // Login handler
             const loginForm = document.getElementById('loginForm');
             loginForm.addEventListener('submit', (e) => {
                 e.preventDefault();
-                e.stopPropagation();
-                const email = document.getElementById('loginEmail').value;
+                const email = document.getElementById('loginEmail').value.trim();
                 const password = document.getElementById('loginPassword').value;
+
+                if (!email || !password) {
+                    showError('Please fill in all fields.');
+                    return;
+                }
+
                 try {
                     const user = auth.login(email, password);
-                    alert('Login successful!');
                     localStorage.setItem('currentUser', JSON.stringify(user));
-                    window.location.replace('index.html');
+                    showError('Login successful! Redirecting...');
+                    setTimeout(() => window.location.replace('index.html'), 800);
                 } catch (error) {
-                    alert(error.message);
+                    showError(error.message);
                 }
             });
 
-            // Prevent undo/redo navigation
-            document.addEventListener('keydown', (event) => {
-                if ((event.ctrlKey || event.metaKey) && (event.key === 'z' || event.key === 'y' || event.key === 'Z' || event.key === 'Y')) {
-                    event.preventDefault();
-                    event.stopPropagation();
-                    console.log('Undo/Redo is disabled');
+            // Prevent undo/redo
+            document.addEventListener('keydown', (e) => {
+                if ((e.ctrlKey || e.metaKey) && ['z', 'y', 'Z', 'Y'].includes(e.key)) {
+                    e.preventDefault();
                 }
             });
 
-            // Prevent back/forward navigation
+            // Prevent back navigation
             history.replaceState(null, null, window.location.href);
-            window.addEventListener('popstate', (event) => {
-                event.preventDefault();
-                event.stopPropagation();
+            window.addEventListener('popstate', () => {
                 history.replaceState(null, null, window.location.href);
             });
         });
