@@ -2,31 +2,35 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
     <title>BRIN Profile</title>
-    <link rel="icon" type="image/x-icon" href="https://github.com/Defdava/Digital-Twin-Website_user/blob/6e7fbc84b4b4ba7fae0470f3313d9cef8f47b8f5/logo-brin.png?raw=true">
+    <link rel="icon" type="image/x-icon" href="https://github.com/Defdava/BRIN_Operator_DigitalTwin/blob/main/public/logo-brin.png?raw=true">
     <style>
+        :root {
+            --primary-blue: #1D3354;
+            --accent-red: #D64045;
+            --text-color: #FFFFFF;
+            --white-bg: #E9FFF9;
+            --input-bg: rgba(255, 255, 255, 0.9);
+            --slot-occupied: #467599;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            color: darkslategrey;
+            color: var(--text-color);
             overflow-x: hidden;
-        }
-
-        body::before {
-            content: "";
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: none;
-            opacity: 0.2;
-            z-index: -1;
+            background-color: var(--white-bg);
         }
 
         video#bg-video {
@@ -37,13 +41,13 @@
             height: 100%;
             object-fit: cover;
             z-index: -2;
-            opacity: 0.4;
+            opacity: 0.2;
         }
 
         header {
-            background-image: linear-gradient(to right, lightseagreen, palevioletred);
+            background-color: var(--primary-blue);
             color: white;
-            padding: 10px 20px;
+            padding: 15px 30px;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -51,7 +55,7 @@
             width: 100%;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
         }
 
         .logo {
@@ -61,38 +65,32 @@
         }
 
         .logo img {
-            height: 40px;
-            vertical-align: middle;
+            height: 50px;
         }
 
         .logo span {
-            margin-left: 10px;
-            font-size: 16px;
+            margin-left: 15px;
+            font-size: 20px;
             font-weight: bold;
         }
 
-        .header-right {
-            display: flex;
-            align-items: center;
-        }
-
         .header-right span {
-            margin-right: 20px;
-            font-size: 14px;
+            font-size: 18px;
+            margin-right: 30px;
         }
 
         .toolbar {
             position: fixed;
-            top: 60px;
-            left: -400px;
-            width: 200px;
-            height: 100%;
-            background-image: linear-gradient(to bottom, lightseagreen, palevioletred);
-            padding: 15px;
-            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
-            transition: left 0.3s ease-in-out;
+            top: 70px;
+            left: -240px;
+            width: 240px;
+            height: calc(100vh - 70px);
+            background-color: var(--primary-blue);
+            padding: 15px 20px;
             z-index: 999;
             overflow-y: auto;
+            transition: left 0.3s ease-in-out;
+            box-sizing: border-box;
         }
 
         .toolbar.active {
@@ -100,162 +98,197 @@
         }
 
         .toolbar .feature-box {
-            background-color: rgba(255, 255, 255, 0.9);
-            border-radius: 8px;
-            padding: 12px;
-            margin-bottom: 16px;
-            font-size: 13px;
+            background-color: rgba(255, 255, 255, 0.15);
+            border: 1px solid var(--accent-red);
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 20px;
+            font-size: 16px;
         }
 
         .toolbar .feature-box h3 {
-            margin: 0 0 8px;
-            font-size: 14px;
-            color: black;
+            margin: 0 0 10px;
+            font-size: 18px;
+            color: white;
+            text-align: center;
         }
 
         .toolbar .feature-box button {
             width: 100%;
-            padding: 6px;
-            background-color: darkgrey;
-            color: black;
+            padding: 10px;
+            background-color: var(--accent-red);
+            color: white;
             border: none;
-            border-radius: 5px;
+            border-radius: 6px;
             cursor: pointer;
-            font-size: 11px;
-            margin-bottom: 4px;
+            font-size: 14px;
+            margin-bottom: 8px;
             transition: background-color 0.3s;
+            font-weight: bold;
         }
 
         .toolbar .feature-box button:hover {
-            background-color: darkslategrey;
-            color: white;
+            background-color: #b8323a;
         }
 
         .toolbar .user-info {
             text-align: center;
+            background-color: rgba(255, 255, 255, 0.15);
+            border: 1px solid var(--accent-red);
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 20px;
         }
 
         .toolbar .user-info img {
-            width: 40px;
-            height: 40px;
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
-            margin-bottom: 8px;
+            margin-bottom: 10px;
+            border: 2px solid white;
         }
 
         .toolbar .user-info span {
             display: block;
-            margin: 4px 0;
-            font-size: 11px;
-            color: black;
-        }
-
-        .toolbar .live-overview {
-            text-align: left;
-        }
-
-        .toolbar .live-overview .status {
-            margin: 8px 0;
-            font-size: 12px;
-            color: black;
-        }
-
-        .toolbar .live-overview .status span {
-            font-weight: bold;
-            color: #007bff;
+            margin: 6px 0;
+            font-size: 14px;
+            color: white;
         }
 
         .main-content {
-            margin-left: 0;
-            padding: 80px 20px 20px;
+            padding: 90px 30px 30px;
             min-height: 100vh;
             display: flex;
             justify-content: center;
-            align-items: center;
+            align-items: flex-start;
+            transition: margin-left 0.3s ease-in-out;
+        }
+
+        .main-content.with-toolbar {
+            margin-left: 260px;
         }
 
         .profile-container {
-            background-image: linear-gradient(to bottom, lightseagreen, palevioletred);
-            padding: 20px;
-            border-radius: 10px;
-            width: 400px;
+            background-color: var(--slot-occupied);
+            padding: 25px;
+            border-radius: 12px;
+            width: 100%;
+            max-width: 420px;
             text-align: center;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            color: white;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            border: 2px solid var(--accent-red);
         }
 
         .profile-container h2 {
-            margin-top: 0;
+            margin: 0 0 20px;
             color: white;
-            font-size: 20px;
+            font-size: 22px;
+            font-weight: bold;
         }
 
         .profile-container img {
             width: 100px;
             height: 100px;
             border-radius: 50%;
-            margin-bottom: 15px;
+            margin: 0 auto 15px;
             object-fit: cover;
+            border: 3px solid white;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
         }
 
         .profile-container .detail {
             margin-bottom: 15px;
-            font-size: 14px;
         }
 
-        .profile-container .detail label {
-            font-weight: bold;
+        .profile-container label {
             display: block;
+            font-weight: bold;
+            margin-bottom: 6px;
+            font-size: 14px;
             color: white;
         }
 
-        .profile-container .detail input,
-        .profile-container input[type="text"],
-        .profile-container input[type="password"],
-        .profile-container input[type="file"],
-        .profile-container input[type="email"] {
+        .profile-container input,
+        .profile-container input[type="file"] {
             width: 100%;
             padding: 10px;
-            margin: 10px 0;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            box-sizing: border-box;
+            margin: 8px 0;
+            border: 2px solid var(--accent-red);
+            border-radius: 6px;
+            background-color: var(--input-bg);
+            color: #333;
             font-size: 14px;
-            background-color: rgba(255, 255, 255, 0.9);
-            color: black;
+            box-sizing: border-box;
+            transition: all 0.3s;
+        }
+
+        .profile-container input::placeholder {
+            color: #666;
+        }
+
+        .profile-container input:focus {
+            outline: none;
+            border-color: white;
+            box-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
+            background-color: white;
         }
 
         .profile-container input[type="file"] {
-            padding: 3px;
+            padding: 8px;
+            background-color: rgba(255, 255, 255, 0.8);
+            cursor: pointer;
         }
 
         .profile-container button {
             width: 100%;
-            padding: 10px;
-            background-color: #007bff;
+            padding: 12px;
+            background-color: var(--accent-red);
             color: white;
             border: none;
-            border-radius: 5px;
+            border-radius: 6px;
             cursor: pointer;
-            font-size: 14px;
-            margin-top: 10px;
+            font-size: 16px;
+            font-weight: bold;
+            margin-top: 15px;
+            transition: background-color 0.3s;
         }
 
         .profile-container button:hover {
-            background-color: #0056b3;
+            background-color: #b8323a;
+        }
+
+        #error-message, #success-message {
+            margin-top: 15px;
+            padding: 10px;
+            border-radius: 6px;
+            font-size: 14px;
+            display: none;
+            text-align: center;
         }
 
         #error-message {
-            color: red;
-            font-size: 12px;
-            margin-top: 10px;
-            display: none;
+            background-color: rgba(220, 53, 69, 0.9);
+            color: white;
         }
 
         #success-message {
-            color: green;
-            font-size: 12px;
-            margin-top: 10px;
-            display: none;
+            background-color: rgba(40, 167, 69, 0.9);
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            header { padding: 10px 15px; }
+            .logo img { height: 30px; }
+            .logo span { font-size: 14px; margin-left: 8px; }
+            .header-right span { font-size: 12px; margin-right: 10px; }
+            .toolbar { width: 100%; left: -100%; top: 70px; }
+            .main-content { padding: 80px 15px 20px; }
+            .main-content.with-toolbar { margin-left: 0; }
+            .profile-container { padding: 18px; max-width: 100%; }
+            .profile-container h2 { font-size: 18px; }
+            .profile-container img { width: 80px; height: 80px; }
+            .profile-container input, .profile-container button { padding: 10px; font-size: 13px; }
+            #error-message, #success-message { font-size: 12px; padding: 8px; }
         }
     </style>
 </head>
@@ -264,16 +297,18 @@
         <source src="https://github.com/Defdava/Digital-Twin-Website-used/blob/main/wave.mp4?raw=true" type="video/mp4">
         Your browser does not support the video tag.
     </video>
+
     <header>
         <div class="logo" id="toggleToolbar">
-            <img src="https://github.com/Defdava/Digital-Twin-Website-used/blob/main/Logo_BRIN.png?raw=true" alt="BRIN Logo">
+            <img src="https://github.com/Defdava/BRIN_Operator_DigitalTwin/blob/main/public/brin_logo.png?raw=true" alt="BRIN Logo">
             <span>BRIN</span>
-            <span>Badan Riset Nasional</span>
+            <span>Badan Riset dan Inovasi Nasional</span>
         </div>
         <div class="header-right">
             <span>Parking Management System</span>
         </div>
     </header>
+
     <aside class="toolbar" id="toolbar">
         <div class="feature-box user-info" id="userInfo">
             <h3>User</h3>
@@ -298,7 +333,8 @@
             <button onclick="refreshOverview()">Refresh</button>
         </div>
     </aside>
-    <main class="main-content">
+
+    <main class="main-content" id="mainContent">
         <div class="profile-container">
             <h2>Profile Settings</h2>
             <img id="previewPic" src="/assets/user.JPG" alt="Profile Picture">
@@ -326,8 +362,9 @@
             <div id="success-message"></div>
         </div>
     </main>
+
     <script>
-        // Authentication System
+        // Auth System
         class User {
             constructor(username, email, password, idWorker, plateNumber = '', profilePic = '/assets/user.JPG') {
                 this.username = username;
@@ -346,15 +383,10 @@
 
             updateUser(oldEmail, updatedData) {
                 const userIndex = this.users.findIndex(user => user.email === oldEmail);
-                if (userIndex === -1) {
-                    throw new Error('User not found!');
-                }
-                // Check for duplicate email
+                if (userIndex === -1) throw new Error('User not found!');
                 if (updatedData.email && updatedData.email !== oldEmail) {
                     const emailExists = this.users.some(user => user.email === updatedData.email);
-                    if (emailExists) {
-                        throw new Error('Email is already in use!');
-                    }
+                    if (emailExists) throw new Error('Email is already in use!');
                 }
                 this.users[userIndex] = { ...this.users[userIndex], ...updatedData };
                 localStorage.setItem('users', JSON.stringify(this.users));
@@ -364,106 +396,93 @@
 
         const auth = new AuthSystem();
 
-        // Simulated parking data (replace with actual API call in production)
+        // Parking Overview (Simulated)
         class ParkingSystem {
             constructor() {
-                this.parkingData = {
-                    availableSpots: 10,
-                    occupiedSpots: 5,
-                    lastActivity: 'Vehicle entered at ' + new Date().toLocaleTimeString()
-                };
+                this.data = { availableSpots: 10, occupiedSpots: 10, lastActivity: 'None' };
             }
-
-            getOverview() {
-                return this.parkingData;
-            }
-
-            refreshOverview() {
-                // Simulate data refresh (replace with actual API call)
-                this.parkingData.availableSpots = Math.floor(Math.random() * 20);
-                this.parkingData.occupiedSpots = Math.floor(Math.random() * 10);
-                this.parkingData.lastActivity = 'Vehicle ' + (Math.random() > 0.5 ? 'entered' : 'exited') + ' at ' + new Date().toLocaleTimeString();
-                return this.parkingData;
+            getOverview() { return this.data; }
+            refresh() {
+                this.data.availableSpots = Math.floor(Math.random() * 15) + 3;
+                this.data.occupiedSpots = 20 - this.data.availableSpots;
+                this.data.lastActivity = `Vehicle ${Math.random() > 0.5 ? 'entered' : 'exited'} at ${new Date().toLocaleTimeString()}`;
+                return this.data;
             }
         }
+        const parking = new ParkingSystem();
 
-        const parkingSystem = new ParkingSystem();
-
-        function updateOverviewDisplay() {
-            const data = parkingSystem.getOverview();
-            document.getElementById('availableSpots').textContent = data.availableSpots;
-            document.getElementById('occupiedSpots').textContent = data.occupiedSpots;
-            document.getElementById('lastActivity').textContent = data.lastActivity;
+        function updateOverview() {
+            const d = parking.getOverview();
+            document.getElementById('availableSpots').textContent = d.availableSpots;
+            document.getElementById('occupiedSpots').textContent = d.occupiedSpots;
+            document.getElementById('lastActivity').textContent = d.lastActivity;
         }
 
         function refreshOverview() {
-            parkingSystem.refreshOverview();
-            updateOverviewDisplay();
+            parking.refresh();
+            updateOverview();
         }
 
         document.addEventListener("DOMContentLoaded", () => {
-            // Authentication Check
             const currentUser = JSON.parse(localStorage.getItem('currentUser'));
-            const userInfo = document.getElementById('userInfo');
+            if (!currentUser) {
+                alert('Silakan login terlebih dahulu!');
+                window.location.replace('login.html');
+                return;
+            }
+
+            // DOM Elements
             const userName = document.getElementById('userName');
             const profilePic = document.getElementById('profilePic');
             const previewPic = document.getElementById('previewPic');
             const usernameInput = document.getElementById('username');
             const emailInput = document.getElementById('email');
+            const idWorkerInput = document.getElementById('idWorker');
+            const plateNumberInput = document.getElementById('plateNumber');
             const passwordInput = document.getElementById('password');
             const confirmPasswordInput = document.getElementById('confirmPassword');
             const profilePictureInput = document.getElementById('profilePicture');
-            const plateNumberInput = document.getElementById('plateNumber');
-            const idWorkerInput = document.getElementById('idWorker');
-            const saveProfileBtn = document.getElementById('saveProfile');
-            const errorMessage = document.getElementById('error-message');
-            const successMessage = document.getElementById('success-message');
+            const saveBtn = document.getElementById('saveProfile');
+            const errorMsg = document.getElementById('error-message');
+            const successMsg = document.getElementById('success-message');
 
-            if (!currentUser) {
-                alert('Silakan login terlebih dahulu!');
-                window.location.replace('login.html');
-                return;
-            } else {
-                userName.textContent = currentUser.username;
-                profilePic.src = currentUser.profilePic || '/assets/user.JPG';
-                previewPic.src = currentUser.profilePic || '/assets/user.JPG';
-                usernameInput.value = currentUser.username;
-                emailInput.value = currentUser.email;
-                idWorkerInput.value = currentUser.idWorker;
-                plateNumberInput.value = currentUser.plateNumber || '';
-            }
+            // Init UI
+            userName.textContent = currentUser.username;
+            profilePic.src = currentUser.profilePic || '/assets/user.JPG';
+            previewPic.src = currentUser.profilePic || '/assets/user.JPG';
+            usernameInput.value = currentUser.username;
+            emailInput.value = currentUser.email;
+            idWorkerInput.value = currentUser.idWorker;
+            plateNumberInput.value = currentUser.plateNumber || '';
 
-            // Initialize Live Overview
-            updateOverviewDisplay();
+            updateOverview();
 
-            // Toggle Toolbar
-            const toggleToolbar = document.getElementById('toggleToolbar');
-            const toolbar = document.getElementById('toolbar');
-            toggleToolbar.addEventListener('click', () => {
-                toolbar.classList.toggle('active');
+            // Toolbar Toggle
+            document.getElementById('toggleToolbar').addEventListener('click', () => {
+                document.getElementById('toolbar').classList.toggle('active');
+                document.getElementById('mainContent').classList.toggle('with-toolbar');
             });
 
             // Logout
             document.querySelector('.logout').addEventListener('click', () => {
                 localStorage.removeItem('currentUser');
-                alert('Berhasil logout!');
                 window.location.replace('login.html');
             });
 
             // Profile Picture Preview
-            profilePictureInput.addEventListener('change', (event) => {
-                const file = event.target.files[0];
+            profilePictureInput.addEventListener('change', (e) => {
+                const file = e.target.files[0];
                 if (file) {
                     const reader = new FileReader();
-                    reader.onload = (e) => {
-                        previewPic.src = e.target.result;
-                    };
+                    reader.onload = (ev) => previewPic.src = ev.target.result;
                     reader.readAsDataURL(file);
                 }
             });
 
-            // Save Profile Changes
-            saveProfileBtn.addEventListener('click', () => {
+            // Save Profile
+            saveBtn.addEventListener('click', () => {
+                errorMsg.style.display = successMsg.style.display = 'none';
+
                 const newUsername = usernameInput.value.trim();
                 const newEmail = emailInput.value.trim();
                 const newIdWorker = idWorkerInput.value.trim();
@@ -472,86 +491,64 @@
                 const confirmPassword = confirmPasswordInput.value;
                 const file = profilePictureInput.files[0];
 
-                errorMessage.style.display = 'none';
-                successMessage.style.display = 'none';
-
-                // Validate inputs
                 if (!newUsername || !newEmail || !newIdWorker) {
-                    errorMessage.textContent = 'Username, Email, and Employee ID cannot be empty!';
-                    errorMessage.style.display = 'block';
+                    errorMsg.textContent = 'Username, Email, and ID Karyawan cannot be empty!';
+                    errorMsg.style.display = 'block';
                     return;
                 }
-
                 if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(newEmail)) {
-                    errorMessage.textContent = 'Please enter a valid email address!';
-                    errorMessage.style.display = 'block';
+                    errorMsg.textContent = 'Invalid email format!';
+                    errorMsg.style.display = 'block';
                     return;
                 }
-
                 if (newPassword && newPassword !== confirmPassword) {
-                    errorMessage.textContent = 'Passwords do not match!';
-                    errorMessage.style.display = 'block';
+                    errorMsg.textContent = 'Passwords do not match!';
+                    errorMsg.style.display = 'block';
                     return;
                 }
 
                 try {
-                    let updatedData = { 
+                    const updatedData = {
                         username: newUsername,
                         email: newEmail,
                         idWorker: newIdWorker,
                         plateNumber: newPlateNumber
                     };
-                    if (newPassword) {
-                        updatedData.password = newPassword;
-                    }
+                    if (newPassword) updatedData.password = newPassword;
+
                     if (file) {
                         const reader = new FileReader();
                         reader.onload = (e) => {
                             updatedData.profilePic = e.target.result;
-                            const updatedUser = auth.updateUser(currentUser.email, updatedData);
-                            localStorage.setItem('currentUser', JSON.stringify(updatedUser));
-                            userName.textContent = updatedUser.username;
-                            profilePic.src = updatedUser.profilePic;
-                            previewPic.src = updatedUser.profilePic;
-                            usernameInput.value = updatedUser.username;
-                            emailInput.value = updatedUser.email;
-                            idWorkerInput.value = updatedUser.idWorker;
-                            plateNumberInput.value = updatedUser.plateNumber;
-                            successMessage.textContent = 'Profile updated successfully!';
-                            successMessage.style.display = 'block';
+                            finalizeUpdate(updatedData);
                         };
                         reader.readAsDataURL(file);
                     } else {
-                        const updatedUser = auth.updateUser(currentUser.email, updatedData);
-                        localStorage.setItem('currentUser', JSON.stringify(updatedUser));
-                        userName.textContent = updatedUser.username;
-                        profilePic.src = updatedUser.profilePic || '/assets/user.JPG';
-                        previewPic.src = updatedUser.profilePic || '/assets/user.JPG';
-                        usernameInput.value = updatedUser.username;
-                        emailInput.value = updatedUser.email;
-                        idWorkerInput.value = updatedUser.idWorker;
-                        plateNumberInput.value = updatedUser.plateNumber;
-                        successMessage.textContent = 'Profile updated successfully!';
-                        successMessage.style.display = 'block';
+                        finalizeUpdate(updatedData);
                     }
-                } catch (error) {
-                    errorMessage.textContent = error.message;
-                    errorMessage.style.display = 'block';
+                } catch (err) {
+                    errorMsg.textContent = err.message;
+                    errorMsg.style.display = 'block';
                 }
             });
 
-            // Prevent Undo/Redo and Navigation
-            document.addEventListener('keydown', (event) => {
-                if ((event.ctrlKey || event.metaKey) && (event.key === 'z' || event.key === 'y' || event.key === 'Z' || event.key === 'Y')) {
-                    event.preventDefault();
-                    event.stopPropagation();
-                    console.log('Undo/Redo is disabled');
-                }
+            function finalizeUpdate(data) {
+                const updatedUser = auth.updateUser(currentUser.email, data);
+                localStorage.setItem('currentUser', JSON.stringify(updatedUser));
+                userName.textContent = updatedUser.username;
+                profilePic.src = updatedUser.profilePic;
+                previewPic.src = updatedUser.profilePic;
+                successMsg.textContent = 'Profile updated successfully!';
+                successMsg.style.display = 'block';
+                setTimeout(() => successMsg.style.display = 'none', 3000);
+            }
+
+            // Security
+            document.addEventListener('keydown', (e) => {
+                if ((e.ctrlKey || e.metaKey) && ['z', 'y', 'Z', 'Y'].includes(e.key)) e.preventDefault();
             });
 
-            window.addEventListener('popstate', (event) => {
-                event.preventDefault();
-                event.stopPropagation();
+            window.addEventListener('popstate', () => {
                 if (!localStorage.getItem('currentUser')) {
                     window.location.replace('login.html');
                 } else {

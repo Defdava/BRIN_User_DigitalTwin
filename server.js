@@ -12,7 +12,7 @@ const __dirname = path.dirname(__filename);
 const app = express();
 
 // ✅ Gunakan PORT dari environment (Vercel pakai dinamis) atau fallback ke 7550
-const port = process.env.PORT || 7550;
+const port = process.env.PORT || 8900;
 
 // ✅ Firebase Admin Initialization
 try {
