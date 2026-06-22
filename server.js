@@ -57,7 +57,7 @@ app.get("/api/test", async (req, res) => {
 
 // ✅ Serve index.html
 app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "index.html"));
+  res.sendFile(path.join(__dirname, "login.html"));
 });
 
 // ✅ Start server (hanya untuk lokal, Vercel handle otomatis)
