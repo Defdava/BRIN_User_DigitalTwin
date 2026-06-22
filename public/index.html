@@ -7,9 +7,7 @@
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
     <title>BRIN Digital Twin Parkir User</title>
-    <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="https://github.com/Defdava/Digital-Twin-Website_user/blob/main/logo-brin.png?raw=true">
-    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -23,60 +21,30 @@
             --text-primary: #F8FAFC;
             --text-secondary: #94A3B8;
             --bg-dark: #070F19;
-            
-            /* Glassmorphism */
             --glass-bg: rgba(15, 32, 54, 0.6);
             --glass-border: rgba(255, 255, 255, 0.08);
             --glass-shadow: rgba(0, 0, 0, 0.35);
             --glass-blur: blur(16px);
         }
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            -webkit-tap-highlight-color: transparent;
-        }
+        * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
 
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            color: var(--text-primary);
-            background-color: var(--bg-dark);
-            overflow-x: hidden;
-            font-size: 16px;
-            touch-action: manipulation;
-            min-height: 100vh;
-            line-height: 1.5;
+            color: var(--text-primary); background-color: var(--bg-dark);
+            overflow-x: hidden; font-size: 16px; touch-action: manipulation; min-height: 100vh; line-height: 1.5;
         }
 
-        /* Ambient Glow Highlights */
         .ambient-glow {
-            position: fixed;
-            width: 450px;
-            height: 450px;
+            position: fixed; width: 450px; height: 450px;
             background: radial-gradient(circle, rgba(230, 57, 70, 0.07) 0%, rgba(0, 0, 0, 0) 70%);
-            top: 15%;
-            right: -150px;
-            z-index: -1;
-            pointer-events: none;
-            filter: blur(50px);
+            top: 15%; right: -150px; z-index: -1; pointer-events: none; filter: blur(50px);
         }
 
-        /* Animasi Background Slideshow */
         body::before {
-            content: "";
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-size: cover;
-            background-position: center center;
-            background-repeat: no-repeat;
-            z-index: -2;
-            animation: slideshow 20s infinite;
-            opacity: 0.25;
-            filter: contrast(105%) brightness(85%);
+            content: ""; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background-size: cover; background-position: center center; background-repeat: no-repeat;
+            z-index: -2; animation: slideshow 20s infinite; opacity: 0.25; filter: contrast(105%) brightness(85%);
         }
 
         @keyframes slideshow {
@@ -97,29 +65,16 @@
             100% { background-image: url('https://github.com/Defdava/Digital-Twin-Website-used/blob/e93ccec33c490658c360964197ea2bc52b9ec83a/fotobrin.jpg?raw=true'); opacity: 0; }
         }
 
-        /* Sticky Glassmorphic Header */
         header {
-            background: rgba(11, 25, 44, 0.8);
-            backdrop-filter: var(--glass-blur);
-            -webkit-backdrop-filter: var(--glass-blur);
-            border-bottom: 1px solid var(--glass-border);
-            color: white;
-            padding: 0 24px;
-            height: 72px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+            background: rgba(11, 25, 44, 0.8); backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur);
+            border-bottom: 1px solid var(--glass-border); color: white; padding: 0 24px; height: 72px;
+            display: flex; justify-content: space-between; align-items: center;
+            position: fixed; width: 100%; top: 0; z-index: 1000; box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
         }
 
         .logo { display: flex; align-items: center; cursor: pointer; gap: 12px; padding: 8px 12px; border-radius: 12px; transition: background-color 0.3s; }
         .logo:hover { background-color: rgba(255, 255, 255, 0.05); }
         .logo img { height: 40px; width: auto; object-fit: contain; filter: drop-shadow(0 2px 8px rgba(255, 255, 255, 0.1)); }
-        
         .logo-text { display: flex; flex-direction: column; }
         .logo-title {
             font-family: 'Plus Jakarta Sans', sans-serif; font-size: 18px; font-weight: 800; letter-spacing: 0.5px;
@@ -128,13 +83,9 @@
         }
         .logo-subtitle { font-size: 10px; color: var(--text-secondary); font-weight: 500; text-transform: uppercase; letter-spacing: 1px; margin-top: -2px; }
 
-        .header-right {
-            display: flex; align-items: center; background: rgba(255, 255, 255, 0.05);
-            padding: 8px 16px; border-radius: 30px; border: 1px solid rgba(255, 255, 255, 0.05);
-        }
+        .header-right { display: flex; align-items: center; background: rgba(255, 255, 255, 0.05); padding: 8px 16px; border-radius: 30px; border: 1px solid rgba(255, 255, 255, 0.05); }
         .header-right span { font-size: 13px; font-weight: 600; letter-spacing: 0.5px; color: #E2E8F0; }
 
-        /* Sidebar Overlay */
         .sidebar-overlay {
             display: none; position: fixed; top: 72px; left: 0; width: 100%; height: calc(100vh - 72px);
             background-color: rgba(0, 0, 0, 0.55); backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px);
@@ -142,7 +93,6 @@
         }
         .sidebar-overlay.active { display: block; opacity: 1; }
 
-        /* Glassmorphic Sidebar Drawer */
         .toolbar {
             position: fixed; top: 72px; left: -280px; width: 280px; height: calc(100vh - 72px);
             background: rgba(11, 25, 44, 0.88); backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur);
@@ -155,30 +105,24 @@
             background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 16px;
             padding: 20px; margin-bottom: 24px; box-shadow: 0 8px 32px var(--glass-shadow);
         }
-        
         .toolbar .feature-box h3 {
             margin-bottom: 16px; font-size: 15px; font-family: 'Plus Jakarta Sans', sans-serif;
             color: var(--text-primary); text-align: center; letter-spacing: 0.5px;
             border-bottom: 1px solid rgba(255, 255, 255, 0.08); padding-bottom: 8px;
         }
-
         .toolbar button {
             width: 100%; padding: 12px 16px; background: rgba(255, 255, 255, 0.04); color: #E2E8F0;
             border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 10px; cursor: pointer; font-size: 14px;
             font-weight: 500; margin-bottom: 10px; display: flex; align-items: center; justify-content: center;
             gap: 12px; transition: all 0.25s ease;
         }
-
-        .toolbar button:hover {
-            background: rgba(255, 255, 255, 0.1); color: white; border-color: rgba(255, 255, 255, 0.15); transform: translateX(4px);
-        }
+        .toolbar button:hover { background: rgba(255, 255, 255, 0.1); color: white; border-color: rgba(255, 255, 255, 0.15); transform: translateX(4px); }
 
         .toolbar .user-info { text-align: center; display: flex; flex-direction: column; align-items: center; }
         .toolbar .user-info img {
             width: 72px; height: 72px; border-radius: 50%; margin-bottom: 12px;
             border: 3px solid var(--secondary-blue); box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: cover;
         }
-        
         .toolbar .user-info span:nth-of-type(1) { font-size: 12px; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 1px; font-weight: 600; }
         .toolbar .user-info #userName { display: block; margin: 4px 0 16px 0; font-size: 16px; font-weight: 700; color: white; font-family: 'Plus Jakarta Sans', sans-serif; }
 
@@ -195,7 +139,6 @@
         }
         .toolbar .feature-box.live-overview .status span { font-size: 18px; font-weight: 700; color: white; display: block; margin-bottom: 4px; font-family: 'Plus Jakarta Sans', sans-serif; }
 
-        /* Main Workspace Area */
         .main-content {
             padding: 104px 32px 40px; min-height: 100vh; margin-left: 0;
             transition: margin-left 0.4s cubic-bezier(0.16, 1, 0.3, 1);
@@ -204,20 +147,17 @@
         }
         .main-content.with-toolbar { margin-left: 280px; }
 
-        /* Glassmorphic Panels */
         .overview, .about-us, .user-details, .park-condition-2d {
             background: var(--glass-bg); backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur);
             padding: 32px 28px; border-radius: 20px; border: 1px solid var(--glass-border); color: white;
             box-shadow: 0 12px 40px var(--glass-shadow);
         }
-
         .overview h1, .about-us h1, .user-details h2, .park-condition-2d h2 {
             margin-bottom: 24px; font-size: 22px; font-family: 'Plus Jakarta Sans', sans-serif; text-align: center; font-weight: 700;
             background: linear-gradient(90deg, #FFFFFF 30%, var(--text-secondary) 100%);
             -webkit-background-clip: text; -webkit-text-fill-color: transparent;
         }
 
-        /* Overview Stats */
         .stats { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
         .stats div {
             background: rgba(11, 25, 44, 0.4); padding: 16px; border-radius: 12px; text-align: center;
@@ -226,7 +166,6 @@
         .stats span:first-child { display: block; font-size: 13px; color: #CBD5E1; margin-bottom: 8px; font-weight: 500; text-transform: uppercase; }
         .stats span:last-child { font-size: 20px; font-weight: 700; font-family: 'Plus Jakarta Sans', sans-serif; color: white; }
 
-        /* About Us */
         .about-us .content { background: rgba(11, 25, 44, 0.4); padding: 24px; border-radius: 16px; border: 1px solid rgba(255, 255, 255, 0.05); text-align: center; }
         .about-us img { width: 100%; max-width: 150px; height: auto; border-radius: 12px; margin: 10px auto 20px; display: block; filter: drop-shadow(0 4px 10px rgba(0,0,0,0.3)); }
         .about-us p { font-size: 14.5px; line-height: 1.7; text-align: justify; color: #E2E8F0; margin-bottom: 20px; }
@@ -237,7 +176,6 @@
         }
         .about-us a button:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(230, 57, 70, 0.4); background: linear-gradient(135deg, #FF4D5A 0%, #E63946 100%); }
 
-        /* Form Controls */
         .user-details .detail { margin-bottom: 16px; }
         .user-details label { display: block; font-weight: 600; margin-bottom: 8px; font-size: 14px; color: #CBD5E1; }
         .user-details input, .user-details select, .user-details textarea {
@@ -248,7 +186,6 @@
         .user-details input:focus, .user-details select:focus, .user-details textarea:focus {
             outline: none; border-color: var(--accent-red); box-shadow: 0 0 0 3px rgba(230, 57, 70, 0.2); background: rgba(11, 25, 44, 0.8);
         }
-        
         .user-details .actions { display: flex; gap: 16px; margin-top: 24px; }
         .user-details .actions button {
             flex: 1; padding: 14px; border: none; border-radius: 10px; font-size: 15px; font-weight: 700; cursor: pointer;
@@ -259,7 +196,6 @@
         .out-btn { background: linear-gradient(135deg, var(--accent-red) 0%, #D62828 100%); color: white; }
         .out-btn:hover { background: linear-gradient(135deg, #FF4D5A 0%, #E63946 100%); transform: translateY(-2px); box-shadow: 0 8px 20px rgba(230, 57, 70, 0.4); }
 
-        /* Parking Lot 2D */
         .parking-lot { display: flex; flex-direction: column; gap: 16px; margin-top: 24px; align-items: center; }
         .column { display: flex; gap: 12px; justify-content: center; }
         .slot {
@@ -269,18 +205,15 @@
         }
         .slot:hover { background: rgba(255, 255, 255, 0.1); transform: translateY(-2px); }
         .slot.occupied { background: rgba(230, 165, 0, 0.2); border-color: rgba(230, 165, 0, 0.8); color: white; }
-        
         .slot .car {
             width: 45px; height: 24px; border-radius: 6px; position: absolute; display: none;
             animation: carEnter 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
         }
         .slot.occupied .car { display: block; }
-
         @keyframes carEnter { from { transform: scale(0); opacity: 0; } to { transform: scale(1); opacity: 1; } }
         @keyframes carExit { from { transform: scale(1); opacity: 1; } to { transform: scale(0); opacity: 0; } }
         .slot.occupied.exiting .car { animation: carExit 0.5s ease-in-out forwards; }
 
-        /* Toast Messages */
         #error-message {
             position: fixed; top: 24px; right: 24px; left: auto; transform: translateY(-50px); padding: 14px 24px;
             border-radius: 12px; font-size: 14px; font-weight: 600; z-index: 2002; box-shadow: 0 10px 30px rgba(230, 57, 70, 0.3);
@@ -289,13 +222,11 @@
         }
         #error-message.show { opacity: 1; transform: translateY(0); }
 
-        /* Interactive Tour Overlay */
         .tour-overlay {
             display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background-color: rgba(0, 0, 0, 0.65); backdrop-filter: blur(2px); z-index: 2000; pointer-events: auto; opacity: 0; transition: opacity 0.3s ease;
         }
         .tour-overlay.active { opacity: 1; }
-
         .tour-tooltip {
             position: absolute; background: rgba(11, 25, 44, 0.95); backdrop-filter: var(--glass-blur); border: 2px solid var(--accent-red);
             border-radius: 16px; padding: 20px; max-width: 320px; text-align: center; box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
@@ -309,21 +240,17 @@
         .tour-tooltip .next-btn:hover { background-color: var(--accent-red-hover); transform: translateY(-1px); }
         .tour-tooltip .close-btn { background-color: rgba(255, 255, 255, 0.08); color: #E2E8F0; border: 1px solid rgba(255, 255, 255, 0.05); }
         .tour-tooltip .close-btn:hover { background-color: rgba(255, 255, 255, 0.15); color: white; }
-        
         .tour-tooltip::after { content: ""; position: absolute; border: 8px solid transparent; pointer-events: none; }
         .tour-tooltip.right::after { border-right-color: var(--accent-red); left: -16px; top: 50%; transform: translateY(-50%); }
         .tour-tooltip.left::after { border-left-color: var(--accent-red); right: -16px; top: 50%; transform: translateY(-50%); }
         .tour-tooltip.top::after { border-top-color: var(--accent-red); bottom: -16px; left: 50%; transform: translateX(-50%); }
         .tour-tooltip.bottom::after { border-bottom-color: var(--accent-red); top: -16px; left: 50%; transform: translateX(-50%); }
-
         @keyframes tourFadeIn { from { opacity: 0; transform: scale(0.92) translate3d(0, 10px, 0); } to { opacity: 1; transform: scale(1) translate3d(0, 0, 0); } }
 
-        /* Mobile Adjustments */
         @media (max-width: 992px) {
             .main-content { grid-template-columns: 1fr; }
             .main-content.with-toolbar { margin-left: 0; }
         }
-
         @media (max-width: 768px) {
             header { padding: 0 16px; height: 64px; }
             .logo { gap: 8px; padding: 4px; }
@@ -332,21 +259,17 @@
             .logo-subtitle { display: none; }
             .header-right { padding: 6px 12px; }
             .header-right span { font-size: 11px; }
-
             .toolbar { top: 64px; height: calc(100vh - 64px); left: -280px; width: 280px; }
             .toolbar.active { transform: translateX(280px); left: -280px; }
             .sidebar-overlay { top: 64px; height: calc(100vh - 64px); }
-
             .main-content { padding: 88px 16px 32px; }
             .overview, .about-us, .user-details, .park-condition-2d { padding: 20px 16px; }
             .overview h1, .about-us h1, .user-details h2, .park-condition-2d h2 { font-size: 18px; }
-            
             .stats { grid-template-columns: 1fr; gap: 12px; }
             .stats div { padding: 12px; }
             .slot { width: 45px; height: 45px; font-size: 13px; border-radius: 8px; }
             .slot .car { width: 32px; height: 18px; }
             .user-details .actions { flex-direction: column; }
-            
             #error-message { top: 76px; right: 16px; left: 16px; transform: translateX(0) !important; text-align: center; max-width: none; }
             .tour-tooltip { max-width: 90%; left: 5% !important; right: 5% !important; top: 50% !important; transform: translateY(-50%) !important; position: fixed; }
             .tour-tooltip::after { display: none; }
@@ -376,7 +299,7 @@
         <div class="feature-box user-info" id="userInfo">
             <span>Welcome Back</span>
             <img id="profilePic" src="/assets/user.JPG" alt="User Avatar">
-            <span id="userName">User Name</span>
+            <span id="userName">Memuat...</span>
             <button class="profile" onclick="window.location.href='profile.html'">
                 <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/></svg>
                 Profile
@@ -385,22 +308,16 @@
                 <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2zm10-1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1z"/><path d="M6 5h4v1H6V5zm0 2h4v1H6V7zm0 2h4v1H6V9z"/></svg>
                 Form Message
             </button>
-            <button class="logout">
+            <button class="logout" id="btnLogout">
                 <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M6 12.5a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v2a.5.5 0 0 1-1 0v-2A1.5 1.5 0 0 1 6.5 2h8A1.5 1.5 0 0 1 16 3.5v9a1.5 1.5 0 0 1-1.5 1.5h-8A1.5 1.5 0 0 1 5 12.5v-2a.5.5 0 0 1 1 0z"/><path fill-rule="evenodd" d="M.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L1.707 7.5H10.5a.5.5 0 0 1 0 1H1.707l2.147 2.146a.5.5 0 0 1-.708.708z"/></svg>
                 Log Out
             </button>
         </div>
         <div class="feature-box live-overview">
             <h3>Live Status Parkir</h3>
-            <div class="status">
-                <span id="availableSpots">0</span> Tersedia
-            </div>
-            <div class="status">
-                <span id="occupiedSpots">0</span> Terisi
-            </div>
-            <div class="status">
-                Aktivitas: <br><span id="lastActivity" style="font-size: 13px; font-weight: normal; margin-top: 5px;">None</span>
-            </div>
+            <div class="status"><span id="availableSpots">0</span> Tersedia</div>
+            <div class="status"><span id="occupiedSpots">0</span> Terisi</div>
+            <div class="status">Aktivitas: <br><span id="lastActivity" style="font-size: 13px; font-weight: normal; margin-top: 5px;">None</span></div>
             <button onclick="if(typeof refreshOverview === 'function') refreshOverview(); else location.reload();">
                 <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2v1z"/><path d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466z"/></svg>
                 Refresh Data
@@ -411,7 +328,6 @@
     <main class="main-content" id="mainContent">
         <div id="error-message"></div>
 
-        <!-- Kolom Kiri -->
         <div class="left-column">
             <div class="about-us" style="margin-bottom: 24px;">
                 <h1>Tentang Kami</h1>
@@ -421,7 +337,6 @@
                     <a href="aboutus.html"><button>Lihat Detail Selengkapnya</button></a>
                 </div>
             </div>
-
             <div class="overview">
                 <h1>Statistik Hari Ini</h1>
                 <div class="stats">
@@ -435,50 +350,24 @@
             </div>
         </div>
 
-        <!-- Kolom Kanan -->
         <div class="right-column">
             <div class="user-details" style="margin-bottom: 24px;">
                 <h2>Formulir Pemesanan Parkir</h2>
-                <div class="detail">
-                    <label for="detailName">Nama Pengguna</label>
-                    <input type="text" id="detailName" readonly>
-                </div>
-                <div class="detail">
-                    <label for="detailIdWorker">ID Karyawan</label>
-                    <input type="text" id="detailIdWorker" readonly>
-                </div>
-                <div class="detail">
-                    <label for="detailPlate">Plat Nomor Kendaraan</label>
-                    <input type="text" id="detailPlate" readonly>
-                </div>
-                <div class="detail">
-                    <label for="parkingDate">Tanggal Reservasi</label>
-                    <input type="date" id="parkingDate">
-                </div>
-                <div class="detail">
-                    <label for="contactNumber">Nomor Kontak / WhatsApp</label>
-                    <input type="tel" id="contactNumber" placeholder="Contoh: 08123456789">
-                </div>
-                <div class="detail">
-                    <label for="parkingNotes">Catatan Tambahan (Opsional)</label>
-                    <textarea id="parkingNotes" placeholder="Tuliskan catatan khusus terkait parkir" rows="3"></textarea>
-                </div>
-                <div class="detail">
-                    <label for="slotSelect">Pilih Posisi Slot Parkir</label>
-                    <select id="slotSelect">
-                        <option value="">-- Silakan Pilih Slot --</option>
-                    </select>
-                </div>
+                <div class="detail"><label for="detailName">Nama Pengguna</label><input type="text" id="detailName" readonly></div>
+                <div class="detail"><label for="detailIdWorker">ID Karyawan</label><input type="text" id="detailIdWorker" readonly></div>
+                <div class="detail"><label for="detailPlate">Plat Nomor Kendaraan</label><input type="text" id="detailPlate" readonly></div>
+                <div class="detail"><label for="parkingDate">Tanggal Reservasi</label><input type="date" id="parkingDate"></div>
+                <div class="detail"><label for="contactNumber">Nomor Kontak / WhatsApp</label><input type="tel" id="contactNumber" placeholder="Contoh: 08123456789"></div>
+                <div class="detail"><label for="parkingNotes">Catatan Tambahan (Opsional)</label><textarea id="parkingNotes" placeholder="Tuliskan catatan khusus terkait parkir" rows="3"></textarea></div>
+                <div class="detail"><label for="slotSelect">Pilih Posisi Slot Parkir</label><select id="slotSelect"><option value="">-- Silakan Pilih Slot --</option></select></div>
                 <div class="actions">
                     <button class="in-btn">Mobil Masuk</button>
                     <button class="out-btn">Mobil Keluar</button>
                 </div>
             </div>
-
             <div class="park-condition-2d">
                 <h2>Kondisi Lapangan Parkir (2D)</h2>
                 <div class="parking-lot">
-                    <!-- Baris Atas -->
                     <div class="column top">
                         <div class="slot" data-slot="20"><span>20</span><div class="car"></div></div>
                         <div class="slot" data-slot="19"><span>19</span><div class="car"></div></div>
@@ -490,7 +379,6 @@
                         <div class="slot" data-slot="13"><span>13</span><div class="car"></div></div>
                         <div class="slot" data-slot="12"><span>12</span><div class="car"></div></div>
                     </div>
-                    <!-- Baris Bawah -->
                     <div class="column bottom">
                         <div class="slot" data-slot="11"><span>11</span><div class="car"></div></div>
                         <div class="slot" data-slot="10"><span>10</span><div class="car"></div></div>
@@ -519,8 +407,9 @@
         </div>
     </main>
 
-    <!-- Firebase SDK -->
+    <!-- Firebase SDK (compat) - App, Auth, dan Database -->
     <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
     
     <script>
@@ -535,9 +424,15 @@
             appId: "1:608462498913:web:73695d8c91f923e2db8e20"
         };
         firebase.initializeApp(firebaseConfig);
-        const dbRef = firebase.database().ref("slot_parking");
-        const slotHistoryRef = firebase.database().ref("slot_history");
+
+        const auth = firebase.auth();
+        const db = firebase.database();
+        const dbRef = db.ref("slot_parking");
+        const slotHistoryRef = db.ref("slot_history");
         let slotSizes = {};
+
+        // Variabel global untuk menyimpan data user yang sudah diambil dari Firebase
+        let activeUserProfile = null;
 
         // === Fungsi Pesan Sistem (Toast) ===
         function showError(message, isSuccess = false) {
@@ -546,6 +441,42 @@
             el.style.background = isSuccess ? 'rgba(16, 185, 129, 0.95)' : 'rgba(230, 57, 70, 0.95)';
             el.classList.add('show');
             setTimeout(() => el.classList.remove('show'), 5000);
+        }
+
+        // === Fungsi untuk mengisi data user ke seluruh UI ===
+        function populateUserUI(profileData, uid) {
+            const username = profileData.username || 'User';
+            const idPegawai = profileData.id_pegawai || '';
+            const profilePic = profileData.profile_pic || '/assets/user.JPG';
+            const email = profileData.email || '';
+
+            // Simpan ke variabel global agar bisa dipakai saat kirim form
+            activeUserProfile = {
+                id: uid,
+                username: username,
+                email: email,
+                idWorker: idPegawai,
+                profilePic: profilePic,
+                plateNumber: profileData.plate_number || ''
+            };
+
+            // Update localStorage agar konsisten
+            localStorage.setItem('currentUser', JSON.stringify({
+                id: uid,
+                username: username,
+                email: email,
+                id_pegawai: idPegawai,
+                profilePic: profilePic
+            }));
+
+            // Isi Sidebar
+            document.getElementById('userName').textContent = username;
+            document.getElementById('profilePic').src = profilePic;
+
+            // Isi Form Pemesanan (data dari register)
+            document.getElementById('detailName').value = username;
+            document.getElementById('detailIdWorker').value = idPegawai;
+            document.getElementById('detailPlate').value = activeUserProfile.plateNumber;
         }
 
         // === Update UI Area Parkir ===
@@ -564,14 +495,11 @@
                         slotEl.classList.add("occupied");
                         const car = slotEl.querySelector(".car");
                         car.style.display = "block";
-                        
-                        // Warna berdasarkan ukuran
                         car.style.backgroundColor = 
-                            size === 'small' ? "#3B82F6" :  // Biru (Small)
-                            size === 'medium' ? "#F59E0B" : // Oranye (Medium)
-                            size === 'big' ? "#EF4444" :    // Merah (Big)
-                            "#94A3B8";                      // Abu-abu (Default)
-                            
+                            size === 'small' ? "#3B82F6" :
+                            size === 'medium' ? "#F59E0B" :
+                            size === 'big' ? "#EF4444" :
+                            "#94A3B8";
                         occupiedCount++;
                     } else {
                         slotEl.classList.remove("occupied");
@@ -579,7 +507,6 @@
                     }
                 }
             }
-            
             const emptyCount = totalSlots - occupiedCount;
             document.getElementById('availableSpots').textContent = emptyCount;
             document.getElementById('occupiedSpots').textContent = occupiedCount;
@@ -597,21 +524,17 @@
                 slotHistoryRef.on("value", (historySnapshot) => {
                     const historyData = historySnapshot.val();
                     if (!historyData) return;
-                    
                     const today = new Date().toLocaleString('en-US', { timeZone: 'Asia/Jakarta' }).split(',')[0];
                     let totalIn = 0, totalOut = 0;
-                    
                     Object.values(historyData).forEach(slotLogs => {
                         Object.values(slotLogs).forEach(entry => {
                             const entryDate = entry.timestamp.split(' ')[0];
-                            // Bandingkan format tanggal agar akurat (tergantung cara simpan di DB sebelumnya)
                             if (entryDate === today || entry.timestamp.includes(new Date().toISOString().split('T')[0])) {
                                 if (entry.status === 'terisi') totalIn++;
                                 else if (entry.status === 'kosong') totalOut++;
                             }
                         });
                     });
-                    
                     document.getElementById('totalCarsIn').textContent = `${totalIn}`;
                     document.getElementById('totalCarsOut').textContent = `${totalOut}`;
                 });
@@ -619,35 +542,36 @@
         }
 
         // === Kirim Aksi Parkir ke Database ===
-        function sendSlotMessage(slotKey, action, user) {
+        function sendSlotMessage(slotKey, action) {
             if (!slotKey) return showError('Silakan pilih posisi slot parkir terlebih dahulu!');
-            
+            if (!activeUserProfile) return showError('Data profil belum dimuat. Silakan refresh halaman.');
+
             const timestamp = new Date().toLocaleString('en-US', { timeZone: 'Asia/Jakarta' });
             const updates = {};
-            
+
             updates[`slot_parking/${slotKey}/occupied`] = (action === 'Mobil Masuk');
             updates[`slot_parking/${slotKey}/size`] = slotSizes[slotKey] || 'none';
             updates[`slot_parking/lastActivity`] = `${action} pada ${timestamp.split(', ')[1]}`;
-            
+
             updates[`slot_message_user/${slotKey}`] = {
                 lastAction: action,
-                user: user.username,
-                idWorker: user.idWorker,
-                plate: user.plateNumber || 'Tidak Tersedia',
+                user: activeUserProfile.username,
+                idWorker: activeUserProfile.idWorker,
+                plate: activeUserProfile.plateNumber || document.getElementById('detailPlate').value || 'Tidak Tersedia',
                 contactNumber: document.getElementById('contactNumber').value || 'Tidak Tersedia',
                 parkingNotes: document.getElementById('parkingNotes').value || 'Tidak Tersedia',
                 date: document.getElementById('parkingDate').value,
                 timestamp: timestamp,
                 size: slotSizes[slotKey] || 'none'
             };
-            
+
             updates[`slot_history/${slotKey}/${timestamp.replace(/[.#$[\]]/g, "_")}`] = {
                 status: action === 'Mobil Masuk' ? 'terisi' : 'kosong',
                 size: slotSizes[slotKey] || 'none',
                 timestamp: timestamp
             };
 
-            firebase.database().ref().update(updates).then(() => {
+            db.ref().update(updates).then(() => {
                 showError(`${action} pada ${slotKey.replace('_',' ')} berhasil dicatat!`, true);
                 document.getElementById('contactNumber').value = '';
                 document.getElementById('parkingNotes').value = '';
@@ -664,7 +588,6 @@
             { element: '.user-details', title: "Formulir Booking / Lapor", text: "Pilih slot kosong pada peta, lengkapi catatan, dan tekan 'Mobil Masuk' untuk mengkonfirmasi kehadiran.", position: 'right' },
             { element: '.park-condition-2d', title: "Peta Digital", text: "Visualisasi 2 dimensi area parkir. Slot kuning menandakan sedang terisi kendaraan (Biru=Kecil, Oranye=Sedang, Merah=Besar).", position: 'left' }
         ];
-        
         let currentTourStep = 0;
         let hasSeenTour = false;
 
@@ -682,7 +605,6 @@
             const text = document.getElementById('tooltipText');
             const nextBtn = document.getElementById('tourNextBtn');
             const target = document.querySelector(tourSteps[step].element);
-            
             if (!target) return endTour();
 
             title.textContent = tourSteps[step].title;
@@ -694,45 +616,23 @@
 
             if (isMobile) {
                 tooltip.className = 'tour-tooltip bottom';
-                tooltip.style.left = '5%';
-                tooltip.style.right = '5%';
-                tooltip.style.top = '50%';
-                tooltip.style.transform = 'translateY(-50%)';
+                tooltip.style.left = '5%'; tooltip.style.right = '5%';
+                tooltip.style.top = '50%'; tooltip.style.transform = 'translateY(-50%)';
             } else {
                 tooltip.className = 'tour-tooltip ' + tourSteps[step].position;
                 tooltip.style.transform = 'none';
-                
                 let left, top;
-                const gap = 16;
-                const tooltipWidth = 320;
-                const tooltipHeight = tooltip.offsetHeight || 160;
-
+                const gap = 16; const tooltipWidth = 320; const tooltipHeight = tooltip.offsetHeight || 160;
                 switch (tourSteps[step].position) {
-                    case 'right': 
-                        left = rect.right + gap; 
-                        top = rect.top + (rect.height / 2) - (tooltipHeight / 2); 
-                        break;
-                    case 'left': 
-                        left = rect.left - tooltipWidth - gap; 
-                        top = rect.top + (rect.height / 2) - (tooltipHeight / 2); 
-                        break;
-                    case 'top': 
-                        left = rect.left + (rect.width / 2) - (tooltipWidth / 2); 
-                        top = rect.top - tooltipHeight - gap; 
-                        break;
-                    case 'bottom': 
-                        left = rect.left + (rect.width / 2) - (tooltipWidth / 2); 
-                        top = rect.bottom + gap; 
-                        break;
+                    case 'right': left = rect.right + gap; top = rect.top + (rect.height / 2) - (tooltipHeight / 2); break;
+                    case 'left': left = rect.left - tooltipWidth - gap; top = rect.top + (rect.height / 2) - (tooltipHeight / 2); break;
+                    case 'top': left = rect.left + (rect.width / 2) - (tooltipWidth / 2); top = rect.top - tooltipHeight - gap; break;
+                    case 'bottom': left = rect.left + (rect.width / 2) - (tooltipWidth / 2); top = rect.bottom + gap; break;
                 }
-                
                 left = Math.max(gap, Math.min(left, window.innerWidth - tooltipWidth - gap));
                 top = Math.max(gap + 72, Math.min(top, window.innerHeight - tooltipHeight - gap));
-
-                tooltip.style.left = `${left}px`;
-                tooltip.style.top = `${top}px`;
+                tooltip.style.left = `${left}px`; tooltip.style.top = `${top}px`;
             }
-            
             nextBtn.textContent = step === tourSteps.length - 1 ? 'Selesai' : 'Lanjut';
         }
 
@@ -741,34 +641,16 @@
             overlay.classList.remove('active');
             setTimeout(() => { overlay.style.display = 'none'; }, 300);
             document.getElementById('tourTooltip').style.display = 'none';
-            currentTourStep = 0;
-            hasSeenTour = true;
+            currentTourStep = 0; hasSeenTour = true;
             localStorage.setItem('tourCompleted_user', 'true');
         }
 
         // === DOM Load / Inisialisasi Utama ===
         document.addEventListener("DOMContentLoaded", () => {
-            const currentUser = JSON.parse(localStorage.getItem('currentUser'));
-            if (!currentUser) {
-                alert('Sesi Anda telah berakhir. Silakan login kembali.');
-                window.location.replace('login.html');
-                return;
-            }
-
             hasSeenTour = localStorage.getItem('tourCompleted_user') === 'true';
 
-            // Setup Data Profil di UI
-            document.getElementById('userName').textContent = currentUser.username || 'User';
-            if(currentUser.profilePic) {
-                document.getElementById('profilePic').src = currentUser.profilePic;
-            }
-            
-            document.getElementById('detailName').value = currentUser.username || '';
-            document.getElementById('detailIdWorker').value = currentUser.idWorker || currentUser.id_pegawai || '';
-            document.getElementById('detailPlate').value = currentUser.plateNumber || '';
+            // Set tanggal default dan render dropdown slot
             document.getElementById('parkingDate').value = new Date().toISOString().split('T')[0];
-
-            // Render Pilihan Slot
             const slotSelect = document.getElementById('slotSelect');
             for (let i = 1; i <= 20; i++) {
                 const opt = document.createElement('option');
@@ -776,6 +658,71 @@
                 opt.textContent = `Slot ${i}`;
                 slotSelect.appendChild(opt);
             }
+
+            // ================================================================
+            // INTI PERBAIKAN: Gunakan Firebase Auth onAuthStateChanged
+            // untuk mengecek status login dan mengambil data profil
+            // dari tabel 'operator_profiles' di Firebase Realtime Database.
+            // ================================================================
+            auth.onAuthStateChanged((user) => {
+                if (user) {
+                    // User SUDAH login via Firebase Auth
+                    const uid = user.uid;
+
+                    // Ambil data profil dari tabel 'operator_profiles' yang disimpan saat Register
+                    db.ref('operator_profiles/' + uid).once('value')
+                        .then((snapshot) => {
+                            if (snapshot.exists()) {
+                                const profileData = snapshot.val();
+                                populateUserUI(profileData, uid);
+                            } else {
+                                // Fallback: Jika data di DB tidak ada, pakai data dari localStorage
+                                console.warn("Profil tidak ditemukan di operator_profiles. Menggunakan data localStorage.");
+                                const localUser = JSON.parse(localStorage.getItem('currentUser'));
+                                if (localUser) {
+                                    populateUserUI({
+                                        username: localUser.username,
+                                        email: localUser.email,
+                                        id_pegawai: localUser.id_pegawai,
+                                        profile_pic: localUser.profilePic
+                                    }, uid);
+                                } else {
+                                    document.getElementById('userName').textContent = user.email.split('@')[0];
+                                    document.getElementById('detailName').value = user.email.split('@')[0];
+                                }
+                            }
+                        })
+                        .catch((err) => {
+                            console.error("Gagal mengambil profil dari Firebase DB:", err);
+                            // Fallback ke localStorage jika ada error akses DB
+                            const localUser = JSON.parse(localStorage.getItem('currentUser'));
+                            if (localUser) {
+                                populateUserUI({
+                                    username: localUser.username,
+                                    email: localUser.email,
+                                    id_pegawai: localUser.id_pegawai,
+                                    profile_pic: localUser.profilePic
+                                }, uid);
+                            }
+                        });
+                } else {
+                    // User BELUM login / sesi habis
+                    // Coba cek localStorage sebagai cadangan terakhir
+                    const localUser = JSON.parse(localStorage.getItem('currentUser'));
+                    if (!localUser) {
+                        alert('Sesi Anda telah berakhir. Silakan login kembali.');
+                        window.location.replace('login.html');
+                        return;
+                    }
+                    // Jika ada data di localStorage (misal redirect dari register), pakai itu
+                    populateUserUI({
+                        username: localUser.username,
+                        email: localUser.email,
+                        id_pegawai: localUser.id_pegawai,
+                        profile_pic: localUser.profilePic
+                    }, localUser.id);
+                }
+            });
 
             // Aksi Toolbar & Overlay
             const toggleToolbar = document.getElementById('toggleToolbar');
@@ -788,16 +735,21 @@
                 mainContent.classList.toggle('with-toolbar');
                 sidebarOverlay.classList.toggle('active');
             });
-
             sidebarOverlay.addEventListener('click', () => {
                 toolbar.classList.remove('active');
                 sidebarOverlay.classList.remove('active');
             });
 
-            // Logout
-            document.querySelector('.logout').addEventListener('click', () => {
-                localStorage.removeItem('currentUser');
-                window.location.replace('login.html');
+            // Logout: Sign out dari Firebase Auth + hapus localStorage
+            document.getElementById('btnLogout').addEventListener('click', () => {
+                auth.signOut().then(() => {
+                    localStorage.removeItem('currentUser');
+                    window.location.replace('login.html');
+                }).catch((err) => {
+                    console.error("Logout Error:", err);
+                    localStorage.removeItem('currentUser');
+                    window.location.replace('login.html');
+                });
             });
 
             // Jam Digital Berjalan
@@ -809,16 +761,15 @@
             updateClock();
             setInterval(updateClock, 1000);
 
-            // Eksekusi Panggilan Firebase
+            // Eksekusi Panggilan Firebase Parkir
             setupFirebaseListener();
 
             // Aksi Button Kirim Form
             document.querySelector('.in-btn').addEventListener('click', () => {
-                sendSlotMessage(document.getElementById('slotSelect').value, 'Mobil Masuk', currentUser);
+                sendSlotMessage(document.getElementById('slotSelect').value, 'Mobil Masuk');
             });
-            
             document.querySelector('.out-btn').addEventListener('click', () => {
-                sendSlotMessage(document.getElementById('slotSelect').value, 'Mobil Keluar', currentUser);
+                sendSlotMessage(document.getElementById('slotSelect').value, 'Mobil Keluar');
             });
 
             // Event Tour
@@ -828,7 +779,6 @@
                 else endTour();
             });
             document.getElementById('tourCloseBtn').addEventListener('click', endTour);
-
             if (!hasSeenTour) setTimeout(startTour, 1000);
         });
     </script>
