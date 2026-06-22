@@ -7,46 +7,105 @@
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
     <title>BRIN Digital Twin Parkir User</title>
+    <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="https://github.com/Defdava/Digital-Twin-Website_user/blob/main/logo-brin.png?raw=true">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
     <style>
         :root {
-            --primary-blue: #1D3354;
-            --accent-red: #D64045;
-            --text-color: #FFFFFF;
-            --white-bg: #E9FFF9;
-            --slot-empty: #9ED8DB;
-            --slot-occupied: #467599;
-            --car-small: #0000FF;
-            --car-medium: #FFA500;
-            --car-big: #FF0000;
+            --primary-blue: #0B192C;
+            --secondary-blue: #1E3E62;
+            --accent-red: #E63946;
+            --accent-red-hover: #D62828;
+            --text-primary: #F8FAFC;
+            --text-secondary: #94A3B8;
+            --bg-dark: #070F19;
+            
+            /* Glassmorphism */
+            --glass-bg: rgba(15, 32, 54, 0.6);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --glass-shadow: rgba(0, 0, 0, 0.35);
+            --glass-blur: blur(16px);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            -webkit-tap-highlight-color: transparent;
         }
 
         body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            color: var(--text-color);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            color: var(--text-primary);
+            background-color: var(--bg-dark);
             overflow-x: hidden;
             font-size: 16px;
             touch-action: manipulation;
-            background-color: var(--white-bg);
+            min-height: 100vh;
+            line-height: 1.5;
         }
 
-        video#bg-video {
+        /* Ambient Glow Highlights */
+        .ambient-glow {
+            position: fixed;
+            width: 450px;
+            height: 450px;
+            background: radial-gradient(circle, rgba(230, 57, 70, 0.07) 0%, rgba(0, 0, 0, 0) 70%);
+            top: 15%;
+            right: -150px;
+            z-index: -1;
+            pointer-events: none;
+            filter: blur(50px);
+        }
+
+        /* Animasi Background Slideshow */
+        body::before {
+            content: "";
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
             z-index: -2;
-            opacity: 0.2;
+            animation: slideshow 20s infinite;
+            opacity: 0.25;
+            filter: contrast(105%) brightness(85%);
         }
 
+        @keyframes slideshow {
+            0% { background-image: url('https://github.com/Defdava/Digital-Twin-Website-used/blob/e93ccec33c490658c360964197ea2bc52b9ec83a/fotobrin1.jpg?raw=true'); opacity: 0.25; }
+            15% { background-image: url('https://github.com/Defdava/Digital-Twin-Website-used/blob/e93ccec33c490658c360964197ea2bc52b9ec83a/fotobrin1.jpg?raw=true'); opacity: 0.25; }
+            20% { background-image: url('https://github.com/Defdava/Digital-Twin-Website-used/blob/e93ccec33c490658c360964197ea2bc52b9ec83a/fotobrin1.jpg?raw=true'); opacity: 0; }
+            20.01% { background-image: url('https://github.com/Defdava/Digital-Twin-Website-used/blob/e93ccec33c490658c360964197ea2bc52b9ec83a/fotobrin3.jpg?raw=true'); opacity: 0; }
+            35% { background-image: url('https://github.com/Defdava/Digital-Twin-Website-used/blob/e93ccec33c490658c360964197ea2bc52b9ec83a/fotobrin3.jpg?raw=true'); opacity: 0.25; }
+            40% { background-image: url('https://github.com/Defdava/Digital-Twin-Website-used/blob/e93ccec33c490658c360964197ea2bc52b9ec83a/fotobrin3.jpg?raw=true'); opacity: 0; }
+            40.01% { background-image: url('https://github.com/Defdava/Digital-Twin-Website-used/blob/e93ccec33c490658c360964197ea2bc52b9ec83a/fotobrin2.jpg?raw=true'); opacity: 0; }
+            55% { background-image: url('https://github.com/Defdava/Digital-Twin-Website-used/blob/e93ccec33c490658c360964197ea2bc52b9ec83a/fotobrin2.jpg?raw=true'); opacity: 0.25; }
+            60% { background-image: url('https://github.com/Defdava/Digital-Twin-Website-used/blob/e93ccec33c490658c360964197ea2bc52b9ec83a/fotobrin2.jpg?raw=true'); opacity: 0; }
+            60.01% { background-image: url('https://github.com/Defdava/Digital-Twin-Website-used/blob/e93ccec33c490658c360964197ea2bc52b9ec83a/fotobrin4.jpg?raw=true'); opacity: 0; }
+            75% { background-image: url('https://github.com/Defdava/Digital-Twin-Website-used/blob/e93ccec33c490658c360964197ea2bc52b9ec83a/fotobrin4.jpg?raw=true'); opacity: 0.25; }
+            80% { background-image: url('https://github.com/Defdava/Digital-Twin-Website-used/blob/e93ccec33c490658c360964197ea2bc52b9ec83a/fotobrin4.jpg?raw=true'); opacity: 0; }
+            80.01% { background-image: url('https://github.com/Defdava/Digital-Twin-Website-used/blob/e93ccec33c490658c360964197ea2bc52b9ec83a/fotobrin.jpg?raw=true'); opacity: 0; }
+            95% { background-image: url('https://github.com/Defdava/Digital-Twin-Website-used/blob/e93ccec33c490658c360964197ea2bc52b9ec83a/fotobrin.jpg?raw=true'); opacity: 0.25; }
+            100% { background-image: url('https://github.com/Defdava/Digital-Twin-Website-used/blob/e93ccec33c490658c360964197ea2bc52b9ec83a/fotobrin.jpg?raw=true'); opacity: 0; }
+        }
+
+        /* Sticky Glassmorphic Header */
         header {
-            background-color: var(--primary-blue);
+            background: rgba(11, 25, 44, 0.8);
+            backdrop-filter: var(--glass-blur);
+            -webkit-backdrop-filter: var(--glass-blur);
+            border-bottom: 1px solid var(--glass-border);
             color: white;
-            padding: 15px 30px;
+            padding: 0 24px;
+            height: 72px;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -54,605 +113,397 @@
             width: 100%;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
         }
 
-        .logo {
-            display: flex;
-            align-items: center;
-            cursor: pointer;
+        .logo { display: flex; align-items: center; cursor: pointer; gap: 12px; padding: 8px 12px; border-radius: 12px; transition: background-color 0.3s; }
+        .logo:hover { background-color: rgba(255, 255, 255, 0.05); }
+        .logo img { height: 40px; width: auto; object-fit: contain; filter: drop-shadow(0 2px 8px rgba(255, 255, 255, 0.1)); }
+        
+        .logo-text { display: flex; flex-direction: column; }
+        .logo-title {
+            font-family: 'Plus Jakarta Sans', sans-serif; font-size: 18px; font-weight: 800; letter-spacing: 0.5px;
+            background: linear-gradient(90deg, #FFFFFF 0%, #E2E8F0 100%);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
         }
-
-        .logo img {
-            height: 50px;
-        }
-
-        .logo span {
-            margin-left: 15px;
-            font-size: 20px;
-            font-weight: bold;
-        }
+        .logo-subtitle { font-size: 10px; color: var(--text-secondary); font-weight: 500; text-transform: uppercase; letter-spacing: 1px; margin-top: -2px; }
 
         .header-right {
-            display: flex;
-            align-items: center;
-            margin-left: auto;
-            margin-right: 30px;
+            display: flex; align-items: center; background: rgba(255, 255, 255, 0.05);
+            padding: 8px 16px; border-radius: 30px; border: 1px solid rgba(255, 255, 255, 0.05);
         }
+        .header-right span { font-size: 13px; font-weight: 600; letter-spacing: 0.5px; color: #E2E8F0; }
 
-        .header-right span {
-            font-size: 18px;
+        /* Sidebar Overlay */
+        .sidebar-overlay {
+            display: none; position: fixed; top: 72px; left: 0; width: 100%; height: calc(100vh - 72px);
+            background-color: rgba(0, 0, 0, 0.55); backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px);
+            z-index: 998; opacity: 0; transition: opacity 0.3s ease;
         }
+        .sidebar-overlay.active { display: block; opacity: 1; }
 
+        /* Glassmorphic Sidebar Drawer */
         .toolbar {
-            position: fixed;
-            top: 70px;
-            left: -240px;
-            width: 240px;
-            height: calc(100vh - 70px);
-            background-color: var(--primary-blue);
-            padding: 15px 20px;
-            z-index: 999;
-            overflow-y: auto;
-            transition: left 0.3s ease-in-out;
-            box-sizing: border-box;
-            color: white;
+            position: fixed; top: 72px; left: -280px; width: 280px; height: calc(100vh - 72px);
+            background: rgba(11, 25, 44, 0.88); backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur);
+            border-right: 1px solid var(--glass-border); padding: 24px 20px; z-index: 999; overflow-y: auto;
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1); box-shadow: 10px 0 30px rgba(0, 0, 0, 0.25);
         }
-
-        .toolbar.active {
-            left: 0;
-        }
+        .toolbar.active { transform: translateX(280px); }
 
         .toolbar .feature-box {
-            background-color: rgba(255, 255, 255, 0.15);
-            border: 1px solid var(--accent-red);
-            border-radius: 10px;
-            padding: 15px;
-            margin-bottom: 20px;
-            font-size: 16px;
+            background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 16px;
+            padding: 20px; margin-bottom: 24px; box-shadow: 0 8px 32px var(--glass-shadow);
         }
-
+        
         .toolbar .feature-box h3 {
-            margin: 0 0 10px;
-            font-size: 18px;
-            color: white;
-            text-align: center;
+            margin-bottom: 16px; font-size: 15px; font-family: 'Plus Jakarta Sans', sans-serif;
+            color: var(--text-primary); text-align: center; letter-spacing: 0.5px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08); padding-bottom: 8px;
         }
 
-        .toolbar .feature-box button {
-            width: 100%;
-            padding: 10px;
-            background-color: var(--accent-red);
-            color: white;
-            border: none;
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: 14px;
-            margin-bottom: 8px;
-            transition: background-color 0.3s;
-            font-weight: bold;
+        .toolbar button {
+            width: 100%; padding: 12px 16px; background: rgba(255, 255, 255, 0.04); color: #E2E8F0;
+            border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 10px; cursor: pointer; font-size: 14px;
+            font-weight: 500; margin-bottom: 10px; display: flex; align-items: center; justify-content: center;
+            gap: 12px; transition: all 0.25s ease;
         }
 
-        .toolbar .feature-box button:hover {
-            background-color: #b8323a;
+        .toolbar button:hover {
+            background: rgba(255, 255, 255, 0.1); color: white; border-color: rgba(255, 255, 255, 0.15); transform: translateX(4px);
         }
 
-        .toolbar .user-info {
-            text-align: center;
-            background-color: rgba(255, 255, 255, 0.15);
-            border: 1px solid var(--accent-red);
-            border-radius: 10px;
-            padding: 15px;
-            margin-bottom: 20px;
-        }
-
+        .toolbar .user-info { text-align: center; display: flex; flex-direction: column; align-items: center; }
         .toolbar .user-info img {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            margin-bottom: 10px;
-            border: 2px solid white;
+            width: 72px; height: 72px; border-radius: 50%; margin-bottom: 12px;
+            border: 3px solid var(--secondary-blue); box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); object-fit: cover;
         }
+        
+        .toolbar .user-info span:nth-of-type(1) { font-size: 12px; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 1px; font-weight: 600; }
+        .toolbar .user-info #userName { display: block; margin: 4px 0 16px 0; font-size: 16px; font-weight: 700; color: white; font-family: 'Plus Jakarta Sans', sans-serif; }
 
-        .toolbar .user-info span {
-            display: block;
-            margin: 6px 0;
-            font-size: 14px;
-            color: white;
+        .toolbar .user-info button.profile { background-color: var(--secondary-blue); border: 1px solid rgba(255, 255, 255, 0.1); color: white; font-weight: 600; }
+        .toolbar .user-info button.profile:hover { background-color: #2c598c; transform: scale(1.02); }
+        .toolbar .user-info button.form-message { background: rgba(230, 57, 70, 0.15); border-color: rgba(230, 57, 70, 0.4); color: white; font-weight: 600; }
+        .toolbar .user-info button.form-message:hover { transform: scale(1.02); }
+        .toolbar .user-info button.logout { background-color: transparent; border: 1px solid rgba(230, 57, 70, 0.3); color: var(--accent-red); font-weight: 600; margin-bottom: 0; }
+        .toolbar .user-info button.logout:hover { background-color: rgba(230, 57, 70, 0.12); border-color: var(--accent-red); color: white; transform: scale(1.02); }
+
+        .toolbar .feature-box.live-overview .status {
+            font-size: 13px; color: #E2E8F0; margin-bottom: 12px; padding: 10px;
+            background: rgba(255, 255, 255, 0.05); border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.05); text-align: center;
         }
+        .toolbar .feature-box.live-overview .status span { font-size: 18px; font-weight: 700; color: white; display: block; margin-bottom: 4px; font-family: 'Plus Jakarta Sans', sans-serif; }
 
+        /* Main Workspace Area */
         .main-content {
-            padding: 90px 30px 30px;
-            min-height: 100vh;
-            margin-left: 0;
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
-            transition: margin-left 0.3s ease-in-out;
+            padding: 104px 32px 40px; min-height: 100vh; margin-left: 0;
+            transition: margin-left 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            max-width: 1400px; margin-right: auto;
+            display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px;
         }
+        .main-content.with-toolbar { margin-left: 280px; }
 
-        .main-content.with-toolbar {
-            margin-left: 260px;
-        }
-
+        /* Glassmorphic Panels */
         .overview, .about-us, .user-details, .park-condition-2d {
-            background-color: var(--slot-occupied);
-            padding: 20px;
-            border-radius: 10px;
-            border: 2px solid var(--accent-red);
-            color: white;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            background: var(--glass-bg); backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur);
+            padding: 32px 28px; border-radius: 20px; border: 1px solid var(--glass-border); color: white;
+            box-shadow: 0 12px 40px var(--glass-shadow);
         }
 
         .overview h1, .about-us h1, .user-details h2, .park-condition-2d h2 {
-            margin: 0 0 15px;
-            font-size: 20px;
-            font-weight: bold;
-            text-align: center;
+            margin-bottom: 24px; font-size: 22px; font-family: 'Plus Jakarta Sans', sans-serif; text-align: center; font-weight: 700;
+            background: linear-gradient(90deg, #FFFFFF 30%, var(--text-secondary) 100%);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
         }
 
-        .stats {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 10px;
-            margin-bottom: 10px;
-        }
-
+        /* Overview Stats */
+        .stats { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
         .stats div {
-            background-color: rgba(255, 255, 255, 0.2);
-            padding: 10px;
-            border-radius: 6px;
-            text-align: center;
-            font-size: 14px;
+            background: rgba(11, 25, 44, 0.4); padding: 16px; border-radius: 12px; text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.05); box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.2);
         }
+        .stats span:first-child { display: block; font-size: 13px; color: #CBD5E1; margin-bottom: 8px; font-weight: 500; text-transform: uppercase; }
+        .stats span:last-child { font-size: 20px; font-weight: 700; font-family: 'Plus Jakarta Sans', sans-serif; color: white; }
 
-        .stats span:first-child {
-            display: block;
-            font-weight: bold;
-            color: rgba(255, 255, 255, 0.8);
-            margin-bottom: 5px;
-        }
-
-        .stats span:last-child {
-            font-size: 16px;
-            font-weight: bold;
-        }
-
-        .about-us .content {
-            background-color: rgba(255, 255, 255, 0.1);
-            padding: 15px;
-            border-radius: 8px;
-            border: 1px solid var(--accent-red);
-            text-align: center;
-        }
-
-        .about-us img {
-            width: 100%;
-            max-width: 150px;
-            height: auto;
-            border: 2px solid white;
-            border-radius: 8px;
-            margin: 10px auto;
-            display: block;
-        }
-
-        .about-us p {
-            font-size: 13px;
-            line-height: 1.6;
-            text-align: justify;
-            margin: 10px 0;
-        }
-
+        /* About Us */
+        .about-us .content { background: rgba(11, 25, 44, 0.4); padding: 24px; border-radius: 16px; border: 1px solid rgba(255, 255, 255, 0.05); text-align: center; }
+        .about-us img { width: 100%; max-width: 150px; height: auto; border-radius: 12px; margin: 10px auto 20px; display: block; filter: drop-shadow(0 4px 10px rgba(0,0,0,0.3)); }
+        .about-us p { font-size: 14.5px; line-height: 1.7; text-align: justify; color: #E2E8F0; margin-bottom: 20px; }
+        .about-us a { text-decoration: none; }
         .about-us a button {
-            background-color: var(--accent-red);
-            color: white;
-            border: none;
-            padding: 10px 16px;
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: 14px;
-            font-weight: bold;
-            margin-top: 10px;
-            transition: background-color 0.3s;
+            background: linear-gradient(135deg, var(--accent-red) 0%, #D62828 100%); color: white; border: none; padding: 12px 24px;
+            border-radius: 10px; cursor: pointer; font-size: 14px; font-weight: 700; transition: all 0.3s ease; box-shadow: 0 4px 12px rgba(230, 57, 70, 0.3);
         }
+        .about-us a button:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(230, 57, 70, 0.4); background: linear-gradient(135deg, #FF4D5A 0%, #E63946 100%); }
 
-        .about-us a button:hover {
-            background-color: #b8323a;
+        /* Form Controls */
+        .user-details .detail { margin-bottom: 16px; }
+        .user-details label { display: block; font-weight: 600; margin-bottom: 8px; font-size: 14px; color: #CBD5E1; }
+        .user-details input, .user-details select, .user-details textarea {
+            width: 100%; padding: 12px 16px; border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 10px;
+            background: rgba(11, 25, 44, 0.6); color: white; font-size: 14px; font-family: inherit; box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2); transition: all 0.3s ease;
         }
-
-        .user-details .detail {
-            margin-bottom: 15px;
+        .user-details input::placeholder, .user-details textarea::placeholder { color: rgba(255, 255, 255, 0.35); }
+        .user-details input:focus, .user-details select:focus, .user-details textarea:focus {
+            outline: none; border-color: var(--accent-red); box-shadow: 0 0 0 3px rgba(230, 57, 70, 0.2); background: rgba(11, 25, 44, 0.8);
         }
-
-        .user-details label {
-            display: block;
-            font-weight: bold;
-            margin-bottom: 6px;
-            font-size: 14px;
-        }
-
-        .user-details input,
-        .user-details select,
-        .user-details textarea {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid var(--accent-red);
-            border-radius: 6px;
-            background-color: rgba(255, 255, 255, 0.2);
-            color: white;
-            font-size: 14px;
-            box-sizing: border-box;
-        }
-
-        .user-details input::placeholder,
-        .user-details textarea::placeholder {
-            color: rgba(255, 255, 255, 0.7);
-        }
-
-        .user-details input:focus,
-        .user-details select:focus,
-        .user-details textarea:focus {
-            outline: none;
-            border-color: white;
-            box-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
-        }
-
-        .user-details .actions {
-            display: flex;
-            gap: 10px;
-            margin-top: 15px;
-        }
-
+        
+        .user-details .actions { display: flex; gap: 16px; margin-top: 24px; }
         .user-details .actions button {
-            flex: 1;
-            padding: 12px;
-            border: none;
-            border-radius: 6px;
-            font-size: 14px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: background-color 0.3s;
+            flex: 1; padding: 14px; border: none; border-radius: 10px; font-size: 15px; font-weight: 700; cursor: pointer;
+            transition: all 0.3s ease; font-family: 'Plus Jakarta Sans', sans-serif; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
         }
+        .in-btn { background: linear-gradient(135deg, #10B981 0%, #059669 100%); color: white; }
+        .in-btn:hover { background: linear-gradient(135deg, #34D399 0%, #10B981 100%); transform: translateY(-2px); box-shadow: 0 8px 20px rgba(16, 185, 129, 0.3); }
+        .out-btn { background: linear-gradient(135deg, var(--accent-red) 0%, #D62828 100%); color: white; }
+        .out-btn:hover { background: linear-gradient(135deg, #FF4D5A 0%, #E63946 100%); transform: translateY(-2px); box-shadow: 0 8px 20px rgba(230, 57, 70, 0.4); }
 
-        .in-btn {
-            background-color: #28a745;
-        }
-
-        .in-btn:hover {
-            background-color: #218838;
-        }
-
-        .out-btn {
-            background-color: #dc3545;
-        }
-
-        .out-btn:hover {
-            background-color: #c82333;
-        }
-
-        .parking-lot {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            margin-top: 20px;
-            align-items: center;
-        }
-
-        .column {
-            display: flex;
-            gap: 8px;
-            justify-content: center;
-        }
-
+        /* Parking Lot 2D */
+        .parking-lot { display: flex; flex-direction: column; gap: 16px; margin-top: 24px; align-items: center; }
+        .column { display: flex; gap: 12px; justify-content: center; }
         .slot {
-            width: 50px;
-            height: 50px;
-            background-color: var(--slot-empty);
-            border: 2px solid var(--accent-red);
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            font-size: 14px;
-            position: relative;
-            cursor: pointer;
-            transition: all 0.3s ease;
+            width: 60px; height: 60px; background: rgba(255, 255, 255, 0.05); border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 12px; display: flex; align-items: center; justify-content: center; font-weight: 700;
+            font-size: 16px; position: relative; cursor: pointer; transition: all 0.3s ease; color: #E2E8F0;
         }
-
-        .slot.occupied {
-            background-color: yellow;
-        }
-
+        .slot:hover { background: rgba(255, 255, 255, 0.1); transform: translateY(-2px); }
+        .slot.occupied { background: rgba(230, 165, 0, 0.2); border-color: rgba(230, 165, 0, 0.8); color: white; }
+        
         .slot .car {
-            width: 35px;
-            height: 20px;
-            border-radius: 4px;
-            position: absolute;
-            display: none;
-            animation: carEnter 0.5s ease-in-out;
+            width: 45px; height: 24px; border-radius: 6px; position: absolute; display: none;
+            animation: carEnter 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
         }
+        .slot.occupied .car { display: block; }
 
-        .slot.occupied .car {
-            display: block;
-        }
+        @keyframes carEnter { from { transform: scale(0); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+        @keyframes carExit { from { transform: scale(1); opacity: 1; } to { transform: scale(0); opacity: 0; } }
+        .slot.occupied.exiting .car { animation: carExit 0.5s ease-in-out forwards; }
 
-        @keyframes carEnter {
-            from { transform: scale(0); opacity: 0; }
-            to { transform: scale(1); opacity: 1; }
-        }
-
-        @keyframes carExit {
-            from { transform: scale(1); opacity: 1; }
-            to { transform: scale(0); opacity: 0; }
-        }
-
-        .slot.occupied.exiting .car {
-            animation: carExit 0.5s ease-in-out forwards;
-        }
-
+        /* Toast Messages */
         #error-message {
-            position: fixed;
-            top: 80px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: rgba(214, 64, 69, 0.9);
-            color: white;
-            padding: 10px 16px;
-            border-radius: 6px;
-            font-size: 14px;
-            z-index: 1001;
-            display: none;
-            max-width: 90%;
-            text-align: center;
+            position: fixed; top: 24px; right: 24px; left: auto; transform: translateY(-50px); padding: 14px 24px;
+            border-radius: 12px; font-size: 14px; font-weight: 600; z-index: 2002; box-shadow: 0 10px 30px rgba(230, 57, 70, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1); transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.4s ease;
+            pointer-events: none; opacity: 0; background: rgba(230, 57, 70, 0.95); color: white; text-align: left;
         }
+        #error-message.show { opacity: 1; transform: translateY(0); }
 
+        /* Interactive Tour Overlay */
         .tour-overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-            z-index: 2000;
-            pointer-events: none;
+            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background-color: rgba(0, 0, 0, 0.65); backdrop-filter: blur(2px); z-index: 2000; pointer-events: auto; opacity: 0; transition: opacity 0.3s ease;
         }
+        .tour-overlay.active { opacity: 1; }
 
         .tour-tooltip {
-            position: absolute;
-            background-color: var(--primary-blue);
-            border: 2px solid var(--accent-red);
-            border-radius: 8px;
-            padding: 15px;
-            max-width: 300px;
-            text-align: center;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-            pointer-events: auto;
-            animation: fadeIn 0.3s ease-in-out;
-            z-index: 2001;
+            position: absolute; background: rgba(11, 25, 44, 0.95); backdrop-filter: var(--glass-blur); border: 2px solid var(--accent-red);
+            border-radius: 16px; padding: 20px; max-width: 320px; text-align: center; box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
+            pointer-events: auto; animation: tourFadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1); z-index: 2001; color: white; border: 1.5px solid rgba(230, 57, 70, 0.5);
         }
+        .tour-tooltip h3 { color: white; font-size: 16px; margin-bottom: 8px; font-weight: 700; font-family: 'Plus Jakarta Sans', sans-serif; }
+        .tour-tooltip p { font-size: 13.5px; color: #CBD5E1; margin-bottom: 16px; line-height: 1.6; }
+        .tour-tooltip .tour-buttons { display: flex; justify-content: center; gap: 12px; }
+        .tour-tooltip button { padding: 8px 16px; border: none; border-radius: 8px; cursor: pointer; font-size: 13px; font-weight: 600; font-family: inherit; transition: all 0.2s ease; }
+        .tour-tooltip .next-btn { background-color: var(--accent-red); color: white; box-shadow: 0 4px 12px rgba(230, 57, 70, 0.3); }
+        .tour-tooltip .next-btn:hover { background-color: var(--accent-red-hover); transform: translateY(-1px); }
+        .tour-tooltip .close-btn { background-color: rgba(255, 255, 255, 0.08); color: #E2E8F0; border: 1px solid rgba(255, 255, 255, 0.05); }
+        .tour-tooltip .close-btn:hover { background-color: rgba(255, 255, 255, 0.15); color: white; }
+        
+        .tour-tooltip::after { content: ""; position: absolute; border: 8px solid transparent; pointer-events: none; }
+        .tour-tooltip.right::after { border-right-color: var(--accent-red); left: -16px; top: 50%; transform: translateY(-50%); }
+        .tour-tooltip.left::after { border-left-color: var(--accent-red); right: -16px; top: 50%; transform: translateY(-50%); }
+        .tour-tooltip.top::after { border-top-color: var(--accent-red); bottom: -16px; left: 50%; transform: translateX(-50%); }
+        .tour-tooltip.bottom::after { border-bottom-color: var(--accent-red); top: -16px; left: 50%; transform: translateX(-50%); }
 
-        .tour-tooltip h3 {
-            color: white;
-            font-size: 16px;
-            margin-bottom: 10px;
-            font-weight: bold;
-        }
+        @keyframes tourFadeIn { from { opacity: 0; transform: scale(0.92) translate3d(0, 10px, 0); } to { opacity: 1; transform: scale(1) translate3d(0, 0, 0); } }
 
-        .tour-tooltip p {
-            font-size: 14px;
-            color: white;
-            margin-bottom: 15px;
-            line-height: 1.5;
-        }
-
-        .tour-tooltip .tour-buttons {
-            display: flex;
-            justify-content: space-between;
-            gap: 10px;
-        }
-
-        .tour-tooltip button {
-            padding: 8px 12px;
-            border: none;
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: 14px;
-        }
-
-        .tour-tooltip .next-btn {
-            background-color: var(--accent-red);
-            color: white;
-        }
-
-        .tour-tooltip .next-btn:hover {
-            background-color: #b8323a;
-        }
-
-        .tour-tooltip .close-btn {
-            background-color: #b8323a;
-            color: white;
-        }
-
-        .tour-tooltip .close-btn:hover {
-            background-color: #c82333;
-        }
-
-        .tour-tooltip:after {
-            content: "";
-            position: absolute;
-            border: 10px solid transparent;
-            pointer-events: none;
-        }
-
-        .tour-tooltip.right:after { border-right-color: var(--accent-red); left: -20px; top: 50%; transform: translateY(-50%); }
-        .tour-tooltip.left:after { border-left-color: var(--accent-red); right: -20px; top: 50%; transform: translateY(-50%); }
-        .tour-tooltip.top:after { border-top-color: var(--accent-red); bottom: -20px; left: 50%; transform: translateX(-50%); }
-        .tour-tooltip.bottom:after { border-bottom-color: var(--accent-red); top: -20px; left: 50%; transform: translateX(-50%); }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: scale(0.9); }
-            to { opacity: 1; transform: scale(1); }
+        /* Mobile Adjustments */
+        @media (max-width: 992px) {
+            .main-content { grid-template-columns: 1fr; }
+            .main-content.with-toolbar { margin-left: 0; }
         }
 
         @media (max-width: 768px) {
-            body { font-size: 9px; }
-            header { padding: 4px 6px; }
-            .logo img { height: 25px; }
-            .logo span { font-size: 10px; margin-left: 4px; }
-            .header-right span { font-size: 9px; }
-            .toolbar { width: 100%; left: -100%; top: 70px; }
-            .main-content { padding: 49px 6px 6px; grid-template-columns: 1fr; gap: 10px; }
-            .main-content.with-toolbar { margin-left: 0; }
-            .overview, .about-us, .user-details, .park-condition-2d { padding: 10px; }
-            .overview h1, .about-us h1, .user-details h2, .park-condition-2d h2 { font-size: 12px; }
-            .stats { grid-template-columns: 1fr; }
-            .stats div { padding: 6px; font-size: 9px; }
-            .about-us img { max-width: 80px; }
-            .about-us p { font-size: 8px; }
-            .user-details input, .user-details select, .user-details textarea { padding: 6px; font-size: 9px; }
-            .user-details .actions button { padding: 8px; font-size: 10px; }
-            .slot { width: 35px; height: 35px; font-size: 10px; }
-            .slot .car { width: 25px; height: 14px; }
-            #error-message { top: 49px; padding: 6px 10px; font-size: 9px; }
-            .tour-tooltip { max-width: 70%; padding: 8px; }
-            .tour-tooltip h3 { font-size: 10px; }
-            .tour-tooltip p { font-size: 8px; }
-            .tour-tooltip button { padding: 4px 6px; font-size: 8px; }
+            header { padding: 0 16px; height: 64px; }
+            .logo { gap: 8px; padding: 4px; }
+            .logo img { height: 32px; }
+            .logo-title { font-size: 15px; }
+            .logo-subtitle { display: none; }
+            .header-right { padding: 6px 12px; }
+            .header-right span { font-size: 11px; }
+
+            .toolbar { top: 64px; height: calc(100vh - 64px); left: -280px; width: 280px; }
+            .toolbar.active { transform: translateX(280px); left: -280px; }
+            .sidebar-overlay { top: 64px; height: calc(100vh - 64px); }
+
+            .main-content { padding: 88px 16px 32px; }
+            .overview, .about-us, .user-details, .park-condition-2d { padding: 20px 16px; }
+            .overview h1, .about-us h1, .user-details h2, .park-condition-2d h2 { font-size: 18px; }
+            
+            .stats { grid-template-columns: 1fr; gap: 12px; }
+            .stats div { padding: 12px; }
+            .slot { width: 45px; height: 45px; font-size: 13px; border-radius: 8px; }
+            .slot .car { width: 32px; height: 18px; }
+            .user-details .actions { flex-direction: column; }
+            
+            #error-message { top: 76px; right: 16px; left: 16px; transform: translateX(0) !important; text-align: center; max-width: none; }
+            .tour-tooltip { max-width: 90%; left: 5% !important; right: 5% !important; top: 50% !important; transform: translateY(-50%) !important; position: fixed; }
+            .tour-tooltip::after { display: none; }
         }
     </style>
 </head>
 <body>
-    <video id="bg-video" autoplay muted loop>
-        <source src="https://github.com/Defdava/Digital-Twin-Website-used/blob/main/wave.mp4?raw=true" type="video/mp4">
-        Your browser does not support the video tag.
-    </video>
+
+    <div class="ambient-glow"></div>
 
     <header>
-        <div class="logo" id="toggleToolbar">
+        <div class="logo" id="toggleToolbar" aria-label="Toggle Sidebar Menu">
             <img src="https://github.com/Defdava/BRIN_Operator_DigitalTwin/blob/46a20c237c763bc2ccd436c332785427771eea05/public/brin_logo.png?raw=true" alt="BRIN Logo">
-            <span>BRIN</span>
-            <span>Badan Riset dan Inovasi Nasional</span>
+            <div class="logo-text">
+                <span class="logo-title">BRIN</span>
+                <span class="logo-subtitle">Badan Riset dan Inovasi Nasional</span>
+            </div>
         </div>
         <div class="header-right">
-            <span>Parking Management System</span>
+            <span>Dashboard Pengguna</span>
         </div>
     </header>
 
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
     <aside class="toolbar" id="toolbar">
         <div class="feature-box user-info" id="userInfo">
-            <h3>User</h3>
-            <img id="profilePic" src="/assets/user.JPG" alt="User">
             <span>Welcome Back</span>
-            <span id="userName"></span>
-            <button class="profile" onclick="window.location.href='profile.html'">Profile</button>
-            <button class="form-message" onclick="window.location.href='index.html'">Form Message</button>
-            <button class="logout">Log Out</button>
+            <img id="profilePic" src="/assets/user.JPG" alt="User Avatar">
+            <span id="userName">User Name</span>
+            <button class="profile" onclick="window.location.href='profile.html'">
+                <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/></svg>
+                Profile
+            </button>
+            <button class="form-message" onclick="window.location.href='index.html'">
+                <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2zm10-1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1z"/><path d="M6 5h4v1H6V5zm0 2h4v1H6V7zm0 2h4v1H6V9z"/></svg>
+                Form Message
+            </button>
+            <button class="logout">
+                <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M6 12.5a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v2a.5.5 0 0 1-1 0v-2A1.5 1.5 0 0 1 6.5 2h8A1.5 1.5 0 0 1 16 3.5v9a1.5 1.5 0 0 1-1.5 1.5h-8A1.5 1.5 0 0 1 5 12.5v-2a.5.5 0 0 1 1 0z"/><path fill-rule="evenodd" d="M.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L1.707 7.5H10.5a.5.5 0 0 1 0 1H1.707l2.147 2.146a.5.5 0 0 1-.708.708z"/></svg>
+                Log Out
+            </button>
         </div>
         <div class="feature-box live-overview">
-            <h3>Live Overview</h3>
+            <h3>Live Status Parkir</h3>
             <div class="status">
-                <span id="availableSpots">0</span> Available Parking Spots
+                <span id="availableSpots">0</span> Tersedia
             </div>
             <div class="status">
-                <span id="occupiedSpots">0</span> Occupied Parking Spots
+                <span id="occupiedSpots">0</span> Terisi
             </div>
             <div class="status">
-                Last Activity: <span id="lastActivity">None</span>
+                Aktivitas: <br><span id="lastActivity" style="font-size: 13px; font-weight: normal; margin-top: 5px;">None</span>
             </div>
-            <button onclick="refreshOverview()">Refresh</button>
+            <button onclick="if(typeof refreshOverview === 'function') refreshOverview(); else location.reload();">
+                <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2v1z"/><path d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466z"/></svg>
+                Refresh Data
+            </button>
         </div>
     </aside>
 
     <main class="main-content" id="mainContent">
         <div id="error-message"></div>
 
-        <div class="about-us">
-            <h1>About Us</h1>
-            <div class="content">
-                <img src="https://github.com/Defdava/Digital-Twin-Website-used/blob/main/Logo_BRIN.png?raw=true" alt="BRIN Logo">
-                <p>BRIN Cisitu Bandung merupakan salah satu kawasan riset milik Badan Riset dan Inovasi Nasional yang berlokasi di Kawasan Sains dan Teknologi Samaun Samadikun, Jalan Sangkuriang, Dago, Kecamatan Coblong, Bandung. Kawasan ini menjadi pusat berbagai kegiatan penelitian dan inovasi, termasuk pengembangan kecerdasan artifisial, keamanan siber, dan teknologi telekomunikasi.</p>
-                <a href="aboutus.html"><button>More Details</button></a>
-            </div>
-        </div>
-
-        <div class="overview">
-            <h1>Live Overview</h1>
-            <div class="stats">
-                <div><span>Cars</span><span id="occupiedSlots">0 / 20</span></div>
-                <div><span>Slots</span><span id="emptySlots">20 / 20</span></div>
-                <div><span>Time</span><span id="currentTime"></span></div>
-                <div><span>Loyalty Customers</span><span>3</span></div>
-                <div><span>Total Cars In</span><span id="totalCarsIn">0 Today</span></div>
-                <div><span>Total Cars Out</span><span id="totalCarsOut">0 Today</span></div>
-            </div>
-        </div>
-
-        <div class="user-details">
-            <h2>Form Message Parking</h2>
-            <div class="detail">
-                <label for="detailName">Nama:</label>
-                <input type="text" id="detailName" readonly>
-            </div>
-            <div class="detail">
-                <label for="detailIdWorker">ID Karyawan:</label>
-                <input type="text" id="detailIdWorker" readonly>
-            </div>
-            <div class="detail">
-                <label for="detailPlate">Plat Nomor Mobil:</label>
-                <input type="text" id="detailPlate" readonly>
-            </div>
-            <div class="detail">
-                <label for="parkingDate">Tanggal:</label>
-                <input type="date" id="parkingDate">
-            </div>
-            <div class="detail">
-                <label for="contactNumber">Nomor Kontak:</label>
-                <input type="tel" id="contactNumber" placeholder="Masukkan nomor kontak">
-            </div>
-            <div class="detail">
-                <label for="parkingNotes">Catatan Parkir:</label>
-                <textarea id="parkingNotes" placeholder="Masukkan catatan parkir" rows="3"></textarea>
-            </div>
-            <div class="detail">
-                <label for="slotSelect">Pilih Slot Parkir:</label>
-                <select id="slotSelect">
-                    <option value="">-- Pilih Slot --</option>
-                </select>
-            </div>
-            <div class="actions">
-                <button class="in-btn">Mobil Masuk</button>
-                <button class="out-btn">Mobil Keluar</button>
-            </div>
-        </div>
-
-        <div class="park-condition-2d">
-            <h2>Park Condition (2D)</h2>
-            <div class="parking-lot">
-                <div class="column top">
-                    <div class="slot" data-slot="20"><span>20</span><div class="car"></div></div>
-                    <div class="slot" data-slot="19"><span>19</span><div class="car"></div></div>
-                    <div class="slot" data-slot="18"><span>18</span><div class="car"></div></div>
-                    <div class="slot" data-slot="17"><span>17</span><div class="car"></div></div>
-                    <div class="slot" data-slot="16"><span>16</span><div class="car"></div></div>
-                    <div class="slot" data-slot="15"><span>15</span><div class="car"></div></div>
-                    <div class="slot" data-slot="14"><span>14</span><div class="car"></div></div>
-                    <div class="slot" data-slot="13"><span>13</span><div class="car"></div></div>
-                    <div class="slot" data-slot="12"><span>12</span><div class="car"></div></div>
+        <!-- Kolom Kiri -->
+        <div class="left-column">
+            <div class="about-us" style="margin-bottom: 24px;">
+                <h1>Tentang Kami</h1>
+                <div class="content">
+                    <img src="https://github.com/Defdava/Digital-Twin-Website-used/blob/main/Logo_BRIN.png?raw=true" alt="BRIN Logo">
+                    <p>BRIN Cisitu Bandung merupakan salah satu kawasan riset milik Badan Riset dan Inovasi Nasional yang berlokasi di Kawasan Sains dan Teknologi Samaun Samadikun, Jalan Sangkuriang, Dago, Kecamatan Coblong, Bandung. Kawasan ini menjadi pusat berbagai kegiatan penelitian dan inovasi, termasuk pengembangan kecerdasan artifisial, keamanan siber, dan teknologi telekomunikasi.</p>
+                    <a href="aboutus.html"><button>Lihat Detail Selengkapnya</button></a>
                 </div>
-                <div class="column bottom">
-                    <div class="slot" data-slot="11"><span>11</span><div class="car"></div></div>
-                    <div class="slot" data-slot="10"><span>10</span><div class="car"></div></div>
-                    <div class="slot" data-slot="9"><span>9</span><div class="car"></div></div>
-                    <div class="slot" data-slot="8"><span>8</span><div class="car"></div></div>
-                    <div class="slot" data-slot="7"><span>7</span><div class="car"></div></div>
-                    <div class="slot" data-slot="6"><span>6</span><div class="car"></div></div>
-                    <div class="slot" data-slot="5"><span>5</span><div class="car"></div></div>
-                    <div class="slot" data-slot="4"><span>4</span><div class="car"></div></div>
-                    <div class="slot" data-slot="3"><span>3</span><div class="car"></div></div>
-                    <div class="slot" data-slot="2"><span>2</span><div class="car"></div></div>
-                    <div class="slot" data-slot="1"><span>1</span><div class="car"></div></div>
+            </div>
+
+            <div class="overview">
+                <h1>Statistik Hari Ini</h1>
+                <div class="stats">
+                    <div><span>Total Terisi</span><span id="occupiedSlots">0 / 20</span></div>
+                    <div><span>Slot Tersedia</span><span id="emptySlots">20 / 20</span></div>
+                    <div><span>Waktu Saat Ini</span><span id="currentTime"></span></div>
+                    <div><span>Total Pelanggan Setia</span><span>3</span></div>
+                    <div><span>Total Masuk Hari Ini</span><span id="totalCarsIn">0</span></div>
+                    <div><span>Total Keluar Hari Ini</span><span id="totalCarsOut">0</span></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Kolom Kanan -->
+        <div class="right-column">
+            <div class="user-details" style="margin-bottom: 24px;">
+                <h2>Formulir Pemesanan Parkir</h2>
+                <div class="detail">
+                    <label for="detailName">Nama Pengguna</label>
+                    <input type="text" id="detailName" readonly>
+                </div>
+                <div class="detail">
+                    <label for="detailIdWorker">ID Karyawan</label>
+                    <input type="text" id="detailIdWorker" readonly>
+                </div>
+                <div class="detail">
+                    <label for="detailPlate">Plat Nomor Kendaraan</label>
+                    <input type="text" id="detailPlate" readonly>
+                </div>
+                <div class="detail">
+                    <label for="parkingDate">Tanggal Reservasi</label>
+                    <input type="date" id="parkingDate">
+                </div>
+                <div class="detail">
+                    <label for="contactNumber">Nomor Kontak / WhatsApp</label>
+                    <input type="tel" id="contactNumber" placeholder="Contoh: 08123456789">
+                </div>
+                <div class="detail">
+                    <label for="parkingNotes">Catatan Tambahan (Opsional)</label>
+                    <textarea id="parkingNotes" placeholder="Tuliskan catatan khusus terkait parkir" rows="3"></textarea>
+                </div>
+                <div class="detail">
+                    <label for="slotSelect">Pilih Posisi Slot Parkir</label>
+                    <select id="slotSelect">
+                        <option value="">-- Silakan Pilih Slot --</option>
+                    </select>
+                </div>
+                <div class="actions">
+                    <button class="in-btn">Mobil Masuk</button>
+                    <button class="out-btn">Mobil Keluar</button>
+                </div>
+            </div>
+
+            <div class="park-condition-2d">
+                <h2>Kondisi Lapangan Parkir (2D)</h2>
+                <div class="parking-lot">
+                    <!-- Baris Atas -->
+                    <div class="column top">
+                        <div class="slot" data-slot="20"><span>20</span><div class="car"></div></div>
+                        <div class="slot" data-slot="19"><span>19</span><div class="car"></div></div>
+                        <div class="slot" data-slot="18"><span>18</span><div class="car"></div></div>
+                        <div class="slot" data-slot="17"><span>17</span><div class="car"></div></div>
+                        <div class="slot" data-slot="16"><span>16</span><div class="car"></div></div>
+                        <div class="slot" data-slot="15"><span>15</span><div class="car"></div></div>
+                        <div class="slot" data-slot="14"><span>14</span><div class="car"></div></div>
+                        <div class="slot" data-slot="13"><span>13</span><div class="car"></div></div>
+                        <div class="slot" data-slot="12"><span>12</span><div class="car"></div></div>
+                    </div>
+                    <!-- Baris Bawah -->
+                    <div class="column bottom">
+                        <div class="slot" data-slot="11"><span>11</span><div class="car"></div></div>
+                        <div class="slot" data-slot="10"><span>10</span><div class="car"></div></div>
+                        <div class="slot" data-slot="9"><span>9</span><div class="car"></div></div>
+                        <div class="slot" data-slot="8"><span>8</span><div class="car"></div></div>
+                        <div class="slot" data-slot="7"><span>7</span><div class="car"></div></div>
+                        <div class="slot" data-slot="6"><span>6</span><div class="car"></div></div>
+                        <div class="slot" data-slot="5"><span>5</span><div class="car"></div></div>
+                        <div class="slot" data-slot="4"><span>4</span><div class="car"></div></div>
+                        <div class="slot" data-slot="3"><span>3</span><div class="car"></div></div>
+                        <div class="slot" data-slot="2"><span>2</span><div class="car"></div></div>
+                        <div class="slot" data-slot="1"><span>1</span><div class="car"></div></div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -662,16 +513,18 @@
             <h3 id="tooltipTitle"></h3>
             <p id="tooltipText"></p>
             <div class="tour-buttons">
-                <button class="next-btn" id="tourNextBtn">Next</button>
-                <button class="close-btn" id="tourCloseBtn">Close</button>
+                <button class="next-btn" id="tourNextBtn">Lanjut</button>
+                <button class="close-btn" id="tourCloseBtn">Tutup</button>
             </div>
         </div>
     </main>
 
+    <!-- Firebase SDK -->
     <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
+    
     <script>
-        // Firebase Config
+        // === Konfigurasi Firebase ===
         const firebaseConfig = {
             apiKey: "AIzaSyAef3SJwvVVTunr6CWki79aenfpXlgYc0s",
             authDomain: "digitaltwinparkingbrin.firebaseapp.com",
@@ -686,15 +539,16 @@
         const slotHistoryRef = firebase.database().ref("slot_history");
         let slotSizes = {};
 
-        // Show Error
-        function showError(message) {
+        // === Fungsi Pesan Sistem (Toast) ===
+        function showError(message, isSuccess = false) {
             const el = document.getElementById('error-message');
             el.textContent = message;
-            el.style.display = 'block';
-            setTimeout(() => el.style.display = 'none', 5000);
+            el.style.background = isSuccess ? 'rgba(16, 185, 129, 0.95)' : 'rgba(230, 57, 70, 0.95)';
+            el.classList.add('show');
+            setTimeout(() => el.classList.remove('show'), 5000);
         }
 
-        // Update Parking Lot
+        // === Update UI Area Parkir ===
         function updateParkingLot(data) {
             const totalSlots = 20;
             let occupiedCount = 0;
@@ -710,10 +564,14 @@
                         slotEl.classList.add("occupied");
                         const car = slotEl.querySelector(".car");
                         car.style.display = "block";
+                        
+                        // Warna berdasarkan ukuran
                         car.style.backgroundColor = 
-                            size === 'small' ? "#0000FF" :
-                            size === 'medium' ? "#FFA500" :
-                            size === 'big' ? "#FF0000" : "#808080";
+                            size === 'small' ? "#3B82F6" :  // Biru (Small)
+                            size === 'medium' ? "#F59E0B" : // Oranye (Medium)
+                            size === 'big' ? "#EF4444" :    // Merah (Big)
+                            "#94A3B8";                      // Abu-abu (Default)
+                            
                         occupiedCount++;
                     } else {
                         slotEl.classList.remove("occupied");
@@ -721,15 +579,16 @@
                     }
                 }
             }
+            
             const emptyCount = totalSlots - occupiedCount;
             document.getElementById('availableSpots').textContent = emptyCount;
             document.getElementById('occupiedSpots').textContent = occupiedCount;
-            document.getElementById('lastActivity').textContent = data.lastActivity || 'None';
+            document.getElementById('lastActivity').textContent = data.lastActivity || 'Belum ada aktivitas';
             document.getElementById('occupiedSlots').textContent = `${occupiedCount} / ${totalSlots}`;
             document.getElementById('emptySlots').textContent = `${emptyCount} / ${totalSlots}`;
         }
 
-        // Setup Firebase
+        // === Realtime Firebase Listener ===
         function setupFirebaseListener() {
             dbRef.on("value", (snapshot) => {
                 const data = snapshot.val() || {};
@@ -738,131 +597,178 @@
                 slotHistoryRef.on("value", (historySnapshot) => {
                     const historyData = historySnapshot.val();
                     if (!historyData) return;
-                    const today = new Date().toISOString().split('T')[0];
+                    
+                    const today = new Date().toLocaleString('en-US', { timeZone: 'Asia/Jakarta' }).split(',')[0];
                     let totalIn = 0, totalOut = 0;
+                    
                     Object.values(historyData).forEach(slotLogs => {
                         Object.values(slotLogs).forEach(entry => {
                             const entryDate = entry.timestamp.split(' ')[0];
-                            if (entryDate === today) {
+                            // Bandingkan format tanggal agar akurat (tergantung cara simpan di DB sebelumnya)
+                            if (entryDate === today || entry.timestamp.includes(new Date().toISOString().split('T')[0])) {
                                 if (entry.status === 'terisi') totalIn++;
                                 else if (entry.status === 'kosong') totalOut++;
                             }
                         });
                     });
-                    document.getElementById('totalCarsIn').textContent = `${totalIn} Today`;
-                    document.getElementById('totalCarsOut').textContent = `${totalOut} Today`;
+                    
+                    document.getElementById('totalCarsIn').textContent = `${totalIn}`;
+                    document.getElementById('totalCarsOut').textContent = `${totalOut}`;
                 });
             });
         }
 
-        // Send Message
+        // === Kirim Aksi Parkir ke Database ===
         function sendSlotMessage(slotKey, action, user) {
-            if (!slotKey) return showError('Pilih slot parkir terlebih dahulu!');
+            if (!slotKey) return showError('Silakan pilih posisi slot parkir terlebih dahulu!');
+            
             const timestamp = new Date().toLocaleString('en-US', { timeZone: 'Asia/Jakarta' });
             const updates = {};
-            updates[`slot_parking/${slotKey}/occupied`] = action === 'Mobil Masuk';
+            
+            updates[`slot_parking/${slotKey}/occupied`] = (action === 'Mobil Masuk');
             updates[`slot_parking/${slotKey}/size`] = slotSizes[slotKey] || 'none';
-            updates[`slot_parking/lastActivity`] = `${action} at ${timestamp}`;
+            updates[`slot_parking/lastActivity`] = `${action} pada ${timestamp.split(', ')[1]}`;
+            
             updates[`slot_message_user/${slotKey}`] = {
                 lastAction: action,
                 user: user.username,
                 idWorker: user.idWorker,
-                plate: user.plateNumber || 'None',
-                contactNumber: document.getElementById('contactNumber').value || 'None',
-                parkingNotes: document.getElementById('parkingNotes').value || 'None',
+                plate: user.plateNumber || 'Tidak Tersedia',
+                contactNumber: document.getElementById('contactNumber').value || 'Tidak Tersedia',
+                parkingNotes: document.getElementById('parkingNotes').value || 'Tidak Tersedia',
                 date: document.getElementById('parkingDate').value,
                 timestamp: timestamp,
                 size: slotSizes[slotKey] || 'none'
             };
-            updates[`slot_history/${slotKey}/${timestamp}`] = {
+            
+            updates[`slot_history/${slotKey}/${timestamp.replace(/[.#$[\]]/g, "_")}`] = {
                 status: action === 'Mobil Masuk' ? 'terisi' : 'kosong',
                 size: slotSizes[slotKey] || 'none',
                 timestamp: timestamp
             };
+
             firebase.database().ref().update(updates).then(() => {
-                showError(`${action} untuk ${slotKey} berhasil dikirim!`);
+                showError(`${action} pada ${slotKey.replace('_',' ')} berhasil dicatat!`, true);
                 document.getElementById('contactNumber').value = '';
                 document.getElementById('parkingNotes').value = '';
-            }).catch(() => showError('Gagal mengirim pesan.'));
+                document.getElementById('slotSelect').value = '';
+            }).catch((err) => {
+                showError(`Gagal menghubungi server: ${err.message}`);
+            });
         }
 
-        // Tour
+        // === Fitur Tour Pengenalan UI ===
         const tourSteps = [
-            { element: '.about-us', title: "Tentang Perusahaan", text: "Ini adalah bagian About Us yang menjelaskan tentang BRIN Cisitu Bandung sebagai pusat riset dan inovasi.", position: 'right' },
-            { element: '.overview', title: "Live Overview", text: "Statistik parkir real-time: mobil masuk/keluar, slot kosong, waktu, dll.", position: 'left' },
-            { element: '.user-details', title: "Form Message Parking", text: "Isi data dan pilih slot, lalu klik 'Mobil Masuk' atau 'Keluar'.", position: 'right' },
-            { element: '.park-condition-2d', title: "Park Condition 2D", text: "Slot kuning = terisi. Warna mobil: biru (kecil), kuning (sedang), merah (besar).", position: 'left' }
+            { element: '.about-us', title: "Informasi Area", text: "Bagian ini menjelaskan secara ringkas informasi mengenai area BRIN Cisitu Bandung tempat Anda memarkir kendaraan.", position: 'right' },
+            { element: '.overview', title: "Statistik Real-time", text: "Pantau kapasitas ruang kosong, slot yang terisi, dan lalu lintas kendaraan secara langsung.", position: 'left' },
+            { element: '.user-details', title: "Formulir Booking / Lapor", text: "Pilih slot kosong pada peta, lengkapi catatan, dan tekan 'Mobil Masuk' untuk mengkonfirmasi kehadiran.", position: 'right' },
+            { element: '.park-condition-2d', title: "Peta Digital", text: "Visualisasi 2 dimensi area parkir. Slot kuning menandakan sedang terisi kendaraan (Biru=Kecil, Oranye=Sedang, Merah=Besar).", position: 'left' }
         ];
+        
         let currentTourStep = 0;
         let hasSeenTour = false;
 
         function startTour() {
             if (hasSeenTour) return;
-            document.getElementById('tourOverlay').style.display = 'block';
+            const overlay = document.getElementById('tourOverlay');
+            overlay.classList.add('active');
+            overlay.style.display = 'block';
             showTooltip(currentTourStep);
         }
+
         function showTooltip(step) {
             const tooltip = document.getElementById('tourTooltip');
             const title = document.getElementById('tooltipTitle');
             const text = document.getElementById('tooltipText');
             const nextBtn = document.getElementById('tourNextBtn');
             const target = document.querySelector(tourSteps[step].element);
+            
             if (!target) return endTour();
 
             title.textContent = tourSteps[step].title;
             text.textContent = tourSteps[step].text;
             tooltip.style.display = 'block';
-            tooltip.className = 'tour-tooltip ' + tourSteps[step].position;
 
             const rect = target.getBoundingClientRect();
-            const tooltipRect = tooltip.getBoundingClientRect();
-            let left, top;
             const isMobile = window.innerWidth <= 768;
 
             if (isMobile) {
-                left = (window.innerWidth - tooltipRect.width) / 2;
-                top = rect.bottom + 10;
                 tooltip.className = 'tour-tooltip bottom';
+                tooltip.style.left = '5%';
+                tooltip.style.right = '5%';
+                tooltip.style.top = '50%';
+                tooltip.style.transform = 'translateY(-50%)';
             } else {
+                tooltip.className = 'tour-tooltip ' + tourSteps[step].position;
+                tooltip.style.transform = 'none';
+                
+                let left, top;
+                const gap = 16;
+                const tooltipWidth = 320;
+                const tooltipHeight = tooltip.offsetHeight || 160;
+
                 switch (tourSteps[step].position) {
-                    case 'right': left = rect.right + 10; top = rect.top + (rect.height / 2) - (tooltipRect.height / 2); break;
-                    case 'left': left = rect.left - tooltipRect.width - 10; top = rect.top + (rect.height / 2) - (tooltipRect.height / 2); break;
-                    case 'top': left = rect.left + (rect.width / 2) - (tooltipRect.width / 2); top = rect.top - tooltipRect.height - 10; break;
-                    case 'bottom': left = rect.left + (rect.width / 2) - (tooltipRect.width / 2); top = rect.bottom + 10; break;
+                    case 'right': 
+                        left = rect.right + gap; 
+                        top = rect.top + (rect.height / 2) - (tooltipHeight / 2); 
+                        break;
+                    case 'left': 
+                        left = rect.left - tooltipWidth - gap; 
+                        top = rect.top + (rect.height / 2) - (tooltipHeight / 2); 
+                        break;
+                    case 'top': 
+                        left = rect.left + (rect.width / 2) - (tooltipWidth / 2); 
+                        top = rect.top - tooltipHeight - gap; 
+                        break;
+                    case 'bottom': 
+                        left = rect.left + (rect.width / 2) - (tooltipWidth / 2); 
+                        top = rect.bottom + gap; 
+                        break;
                 }
+                
+                left = Math.max(gap, Math.min(left, window.innerWidth - tooltipWidth - gap));
+                top = Math.max(gap + 72, Math.min(top, window.innerHeight - tooltipHeight - gap));
+
+                tooltip.style.left = `${left}px`;
+                tooltip.style.top = `${top}px`;
             }
-            tooltip.style.left = `${left}px`;
-            tooltip.style.top = `${top}px`;
-            nextBtn.textContent = step === tourSteps.length - 1 ? 'Finish' : 'Next';
+            
+            nextBtn.textContent = step === tourSteps.length - 1 ? 'Selesai' : 'Lanjut';
         }
+
         function endTour() {
-            document.getElementById('tourOverlay').style.display = 'none';
+            const overlay = document.getElementById('tourOverlay');
+            overlay.classList.remove('active');
+            setTimeout(() => { overlay.style.display = 'none'; }, 300);
             document.getElementById('tourTooltip').style.display = 'none';
             currentTourStep = 0;
             hasSeenTour = true;
             localStorage.setItem('tourCompleted_user', 'true');
         }
 
-        // DOM Loaded
+        // === DOM Load / Inisialisasi Utama ===
         document.addEventListener("DOMContentLoaded", () => {
             const currentUser = JSON.parse(localStorage.getItem('currentUser'));
             if (!currentUser) {
-                alert('Silakan login terlebih dahulu!');
+                alert('Sesi Anda telah berakhir. Silakan login kembali.');
                 window.location.replace('login.html');
                 return;
             }
 
             hasSeenTour = localStorage.getItem('tourCompleted_user') === 'true';
 
-            // Setup UI
-            document.getElementById('userName').textContent = currentUser.username;
-            document.getElementById('profilePic').src = currentUser.profilePic || '/assets/user.JPG';
-            document.getElementById('detailName').value = currentUser.username;
-            document.getElementById('detailIdWorker').value = currentUser.idWorker;
-            document.getElementById('detailPlate').value = currentUser.plateNumber || 'None';
+            // Setup Data Profil di UI
+            document.getElementById('userName').textContent = currentUser.username || 'User';
+            if(currentUser.profilePic) {
+                document.getElementById('profilePic').src = currentUser.profilePic;
+            }
+            
+            document.getElementById('detailName').value = currentUser.username || '';
+            document.getElementById('detailIdWorker').value = currentUser.idWorker || currentUser.id_pegawai || '';
+            document.getElementById('detailPlate').value = currentUser.plateNumber || '';
             document.getElementById('parkingDate').value = new Date().toISOString().split('T')[0];
 
-            // Populate Slot Select
+            // Render Pilihan Slot
             const slotSelect = document.getElementById('slotSelect');
             for (let i = 1; i <= 20; i++) {
                 const opt = document.createElement('option');
@@ -871,10 +777,21 @@
                 slotSelect.appendChild(opt);
             }
 
-            // Toolbar
-            document.getElementById('toggleToolbar').addEventListener('click', () => {
-                document.getElementById('toolbar').classList.toggle('active');
-                document.getElementById('mainContent').classList.toggle('with-toolbar');
+            // Aksi Toolbar & Overlay
+            const toggleToolbar = document.getElementById('toggleToolbar');
+            const toolbar = document.getElementById('toolbar');
+            const mainContent = document.getElementById('mainContent');
+            const sidebarOverlay = document.getElementById('sidebarOverlay');
+
+            toggleToolbar.addEventListener('click', () => {
+                toolbar.classList.toggle('active');
+                mainContent.classList.toggle('with-toolbar');
+                sidebarOverlay.classList.toggle('active');
+            });
+
+            sidebarOverlay.addEventListener('click', () => {
+                toolbar.classList.remove('active');
+                sidebarOverlay.classList.remove('active');
             });
 
             // Logout
@@ -883,27 +800,28 @@
                 window.location.replace('login.html');
             });
 
-            // Clock
+            // Jam Digital Berjalan
             function updateClock() {
                 const now = new Date();
                 const options = { timeZone: 'Asia/Jakarta', hour: 'numeric', minute: '2-digit', second: '2-digit', hour12: false };
-                document.getElementById('currentTime').textContent = new Intl.DateTimeFormat('en-US', options).format(now) + ' WIB';
+                document.getElementById('currentTime').textContent = new Intl.DateTimeFormat('id-ID', options).format(now) + ' WIB';
             }
             updateClock();
             setInterval(updateClock, 1000);
 
-            // Firebase
+            // Eksekusi Panggilan Firebase
             setupFirebaseListener();
 
-            // Buttons
+            // Aksi Button Kirim Form
             document.querySelector('.in-btn').addEventListener('click', () => {
                 sendSlotMessage(document.getElementById('slotSelect').value, 'Mobil Masuk', currentUser);
             });
+            
             document.querySelector('.out-btn').addEventListener('click', () => {
                 sendSlotMessage(document.getElementById('slotSelect').value, 'Mobil Keluar', currentUser);
             });
 
-            // Tour
+            // Event Tour
             document.getElementById('tourNextBtn').addEventListener('click', () => {
                 currentTourStep++;
                 if (currentTourStep < tourSteps.length) showTooltip(currentTourStep);
@@ -911,12 +829,7 @@
             });
             document.getElementById('tourCloseBtn').addEventListener('click', endTour);
 
-            if (!hasSeenTour) setTimeout(startTour, 800);
-
-            // Prevent Undo/Redo
-            document.addEventListener('keydown', (e) => {
-                if ((e.ctrlKey || e.metaKey) && (e.key === 'z' || e.key === 'y')) e.preventDefault();
-            });
+            if (!hasSeenTour) setTimeout(startTour, 1000);
         });
     </script>
 </body>

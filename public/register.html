@@ -7,227 +7,92 @@
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
     <title>BRIN Register</title>
+    <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="https://github.com/Defdava/BRIN_Operator_DigitalTwin/blob/main/public/logo-brin.png?raw=true">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
     <style>
         :root {
-            --primary-blue: #1D3354;
-            --accent-red: #D64045;
-            --text-color: #FFFFFF;
-            --white-bg: #E9FFF9;
-            --input-bg: rgba(255, 255, 255, 0.9);
+            --primary-blue: #0B192C;
+            --accent-red: #E63946;
+            --text-primary: #F8FAFC;
+            --text-secondary: #94A3B8;
+            --bg-dark: #070F19;
+            --glass-bg: rgba(15, 32, 54, 0.6);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --glass-shadow: rgba(0, 0, 0, 0.35);
+            --glass-blur: blur(16px);
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
 
         body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            color: var(--text-color);
-            overflow-x: hidden;
-            background: #d3d3d3;
-            min-height: 100vh;
-            position: relative;
+            font-family: 'Inter', sans-serif; color: var(--text-primary); background-color: var(--bg-dark);
+            overflow-x: hidden; font-size: 16px; min-height: 100vh; line-height: 1.5;
         }
 
-        body::before {
-            content: "";
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            z-index: -1;
-            opacity: 0.2;
-            animation: slideshow 25s infinite;
-        }
+        .ambient-glow { position: fixed; width: 450px; height: 450px; background: radial-gradient(circle, rgba(230, 57, 70, 0.07) 0%, rgba(0, 0, 0, 0) 70%); top: 15%; right: -150px; z-index: -1; pointer-events: none; filter: blur(50px); }
+        body::before { content: ""; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-size: cover; background-position: center center; background-repeat: no-repeat; z-index: -2; animation: slideshow 20s infinite; opacity: 0.25; filter: contrast(105%) brightness(85%); }
 
         @keyframes slideshow {
-            0%, 15%   { background-image: url('https://github.com/Defdava/Digital-Twin-Website-used/blob/main/fotobrin1.jpg?raw=true'); opacity: 0.2; }
-            20%       { opacity: 0; }
-            20.01%, 35% { background-image: url('https://github.com/Defdava/Digital-Twin-Website-used/blob/main/fotobrin3.jpg?raw=true'); opacity: 0.2; }
-            40%       { opacity: 0; }
-            40.01%, 55% { background-image: url('https://github.com/Defdava/Digital-Twin-Website-used/blob/main/fotobrin2.jpg?raw=true'); opacity: 0.2; }
-            60%       { opacity: 0; }
-            60.01%, 75% { background-image: url('https://github.com/Defdava/Digital-Twin-Website-used/blob/main/fotobrin4.jpg?raw=true'); opacity: 0.2; }
-            80%       { opacity: 0; }
-            80.01%, 95% { background-image: url('https://github.com/Defdava/Digital-Twin-Website-used/blob/main/fotobrin.jpg?raw=true'); opacity: 0.2; }
-            100%      { opacity: 0; }
+            0%, 15% { background-image: url('https://github.com/Defdava/Digital-Twin-Website-used/blob/e93ccec33c490658c360964197ea2bc52b9ec83a/fotobrin1.jpg?raw=true'); opacity: 0.25; }
+            20% { opacity: 0; }
+            20.01%, 35% { background-image: url('https://github.com/Defdava/Digital-Twin-Website-used/blob/e93ccec33c490658c360964197ea2bc52b9ec83a/fotobrin3.jpg?raw=true'); opacity: 0.25; }
+            40% { opacity: 0; }
+            40.01%, 55% { background-image: url('https://github.com/Defdava/Digital-Twin-Website-used/blob/e93ccec33c490658c360964197ea2bc52b9ec83a/fotobrin2.jpg?raw=true'); opacity: 0.25; }
+            60% { opacity: 0; }
+            60.01%, 75% { background-image: url('https://github.com/Defdava/Digital-Twin-Website-used/blob/e93ccec33c490658c360964197ea2bc52b9ec83a/fotobrin4.jpg?raw=true'); opacity: 0.25; }
+            80% { opacity: 0; }
+            80.01%, 95% { background-image: url('https://github.com/Defdava/Digital-Twin-Website-used/blob/e93ccec33c490658c360964197ea2bc52b9ec83a/fotobrin.jpg?raw=true'); opacity: 0.25; }
+            100% { opacity: 0; }
         }
 
-        header {
-            background-color: var(--primary-blue);
-            color: white;
-            padding: 15px 30px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-        }
+        header { background: rgba(11, 25, 44, 0.8); backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur); border-bottom: 1px solid var(--glass-border); color: white; padding: 0 24px; height: 72px; display: flex; justify-content: space-between; align-items: center; position: fixed; width: 100%; top: 0; z-index: 1000; box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2); }
+        .logo { display: flex; align-items: center; gap: 12px; }
+        .logo img { height: 40px; filter: drop-shadow(0 2px 8px rgba(255, 255, 255, 0.1)); }
+        .logo-text { display: flex; flex-direction: column; }
+        .logo-title { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 18px; font-weight: 800; background: linear-gradient(90deg, #FFFFFF 0%, #E2E8F0 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .logo-subtitle { font-size: 10px; color: var(--text-secondary); font-weight: 500; text-transform: uppercase; margin-top: -2px; }
+        .header-right { display: flex; align-items: center; background: rgba(255, 255, 255, 0.05); padding: 8px 16px; border-radius: 30px; border: 1px solid rgba(255, 255, 255, 0.05); }
+        .header-right span { font-size: 13px; font-weight: 600; color: #E2E8F0; }
 
-        .logo {
-            display: flex;
-            align-items: center;
-            cursor: pointer;
-        }
+        .register-container { display: flex; flex-direction: column; justify-content: center; align-items: center; min-height: 100vh; padding: 100px 20px 40px; }
+        .welcome-message { color: white; font-size: 26px; font-weight: 800; font-family: 'Plus Jakarta Sans', sans-serif; text-align: center; margin-bottom: 24px; background: linear-gradient(90deg, #FFFFFF 0%, #CBD5E1 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        
+        .register-box { background: var(--glass-bg); backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur); padding: 32px 32px; border-radius: 20px; width: 100%; max-width: 400px; text-align: center; box-shadow: 0 12px 40px var(--glass-shadow); border: 1px solid var(--glass-border); }
+        .register-box h2 { margin: 0 0 24px; color: white; font-size: 22px; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; }
+        .register-box input { width: 100%; padding: 14px 16px; margin-bottom: 16px; border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 10px; background: rgba(11, 25, 44, 0.6); color: white; font-size: 14px; font-family: inherit; box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2); transition: all 0.3s ease; }
+        .register-box input::placeholder { color: rgba(255, 255, 255, 0.4); }
+        .register-box input:focus { outline: none; border-color: var(--accent-red); box-shadow: 0 0 0 3px rgba(230, 57, 70, 0.2); background: rgba(11, 25, 44, 0.8); }
 
-        .logo img {
-            height: 50px;
-        }
+        .register-box button { width: 100%; padding: 14px; background: linear-gradient(135deg, var(--accent-red) 0%, #D62828 100%); color: white; border: none; border-radius: 10px; cursor: pointer; font-size: 15px; font-weight: 700; margin: 8px 0 16px; transition: all 0.3s ease; font-family: 'Plus Jakarta Sans', sans-serif; box-shadow: 0 4px 12px rgba(230, 57, 70, 0.3); }
+        .register-box button:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(230, 57, 70, 0.4); background: linear-gradient(135deg, #FF4D5A 0%, #E63946 100%); }
+        .register-box a { display: inline-block; margin: 8px 0; color: #CBD5E1; text-decoration: none; font-size: 13.5px; transition: all 0.3s; font-weight: 500; }
+        .register-box a:hover { color: white; transform: translateX(2px); }
 
-        .logo span {
-            margin-left: 15px;
-            font-size: 20px;
-            font-weight: bold;
-        }
-
-        .header-right span {
-            font-size: 18px;
-            margin-right: 30px;
-        }
-
-        .register-container {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            padding: 90px 20px 40px;
-            background: rgba(0, 0, 0, 0.5);
-        }
-
-        .welcome-message {
-            color: white;
-            font-size: 24px;
-            font-weight: bold;
-            text-align: center;
-            margin-bottom: 20px;
-            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
-        }
-
-        .register-box {
-            background-color: rgba(89, 158, 163, 0.4);
-            padding: 25px;
-            border-radius: 12px;
-            width: 100%;
-            max-width: 340px;
-            text-align: center;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-            border: 2px solid var(--accent-red);
-        }
-
-        .register-box h2 {
-            margin: 0 0 20px;
-            color: white;
-            font-size: 22px;
-            font-weight: bold;
-        }
-
-        .register-box input {
-            width: 100%;
-            padding: 12px;
-            margin: 10px 0;
-            border: 2px solid var(--accent-red);
-            border-radius: 6px;
-            background-color: var(--input-bg);
-            color: #333;
-            font-size: 14px;
-            box-sizing: border-box;
-            transition: all 0.3s;
-        }
-
-        .register-box input::placeholder {
-            color: #666;
-        }
-
-        .register-box input:focus {
-            outline: none;
-            border-color: white;
-            box-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
-            background-color: white;
-        }
-
-        .register-box button {
-            width: 100%;
-            padding: 12px;
-            background-color: var(--accent-red);
-            color: white;
-            border: none;
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: 16px;
-            font-weight: bold;
-            margin: 15px 0 10px;
-            transition: background-color 0.3s;
-        }
-
-        .register-box button:hover {
-            background-color: #b8323a;
-        }
-
-        .register-box a {
-            display: block;
-            margin: 8px 0;
-            color: white;
-            text-decoration: none;
-            font-size: 13px;
-            transition: color 0.3s;
-        }
-
-        .register-box a:hover {
-            color: #ffcccc;
-            text-decoration: underline;
-        }
-
-        #error-message {
-            position: fixed;
-            top: 80px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: rgba(214, 64, 69, 0.9);
-            color: white;
-            padding: 10px 16px;
-            border-radius: 6px;
-            font-size: 14px;
-            z-index: 1001;
-            display: none;
-            max-width: 90%;
-            text-align: center;
-        }
+        #error-message { position: fixed; top: 24px; right: 24px; left: auto; transform: translateY(-50px); padding: 14px 24px; border-radius: 12px; font-size: 14px; font-weight: 600; z-index: 2002; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); border: 1px solid rgba(255, 255, 255, 0.1); transition: transform 0.4s ease, opacity 0.4s ease; pointer-events: none; opacity: 0; color: white; text-align: left; }
+        #error-message.show { opacity: 1; transform: translateY(0); }
 
         @media (max-width: 768px) {
-            header { padding: 10px 15px; }
-            .logo img { height: 30px; }
-            .logo span { font-size: 14px; margin-left: 8px; }
-            .header-right span { font-size: 12px; margin-right: 10px; }
-            .welcome-message { font-size: 16px; margin-bottom: 15px; }
-            .register-box { padding: 15px; max-width: 300px; }
-            .register-box h2 { font-size: 18px; }
-            .register-box input, .register-box button { padding: 10px; font-size: 13px; }
-            .register-box a { font-size: 12px; }
-            #error-message { top: 60px; font-size: 12px; padding: 8px 12px; }
+            header { padding: 0 16px; height: 64px; } .logo { gap: 8px; } .logo img { height: 32px; } .logo-title { font-size: 15px; } .logo-subtitle { display: none; }
+            .welcome-message { font-size: 20px; } .register-box { padding: 24px 20px; } .register-box h2 { font-size: 18px; } #error-message { top: 76px; right: 16px; left: 16px; transform: translateX(0) !important; text-align: center; }
         }
     </style>
 </head>
 <body>
+    <div class="ambient-glow"></div>
     <div id="error-message"></div>
 
     <header>
         <div class="logo">
             <img src="https://github.com/Defdava/BRIN_Operator_DigitalTwin/blob/46a20c237c763bc2ccd436c332785427771eea05/public/brin_logo.png?raw=true" alt="BRIN Logo">
-            <span>BRIN</span>
-            <span>Badan Riset dan Inovasi Nasional</span>
+            <div class="logo-text">
+                <span class="logo-title">BRIN</span>
+                <span class="logo-subtitle">Badan Riset dan Inovasi Nasional</span>
+            </div>
         </div>
         <div class="header-right">
             <span>Parking Management System</span>
@@ -235,21 +100,22 @@
     </header>
 
     <div class="register-container">
-        <div class="welcome-message">Welcome to BRIN Parking System</div>
+        <div class="welcome-message">Buat Akun Baru</div>
         <div class="register-box">
             <h2>REGISTER</h2>
             <form id="registerForm">
-                <input type="text" id="regUsername" placeholder="Username" required>
-                <input type="email" id="regEmail" placeholder="Email" required>
-                <input type="text" id="regIdWorker" placeholder="ID Karyawan" required>
-                <input type="password" id="regPassword" placeholder="Password" required>
-                <button type="submit">Register</button>
-                <a href="/login.html">Already have an account? Click Here</a>
+                <input type="text" id="regUsername" placeholder="Nama Lengkap" required>
+                <input type="email" id="regEmail" placeholder="Alamat Email" required>
+                <input type="text" id="regIdWorker" placeholder="ID Karyawan / Pegawai" required>
+                <input type="password" id="regPassword" placeholder="Kata Sandi" required>
+                <button type="submit">Daftar Sekarang</button>
+                <a href="login.html">Sudah memiliki akun? Login di sini</a>
             </form>
         </div>
     </div>
 
     <script>
+        // === MOCK AUTH SYSTEM (SESUAI BAWAAN USER) ===
         class User {
             constructor(username, email, password, idWorker, profilePic = '/assets/user.JPG') {
                 this.username = username;
@@ -264,18 +130,11 @@
             constructor() {
                 this.users = JSON.parse(localStorage.getItem('users')) || [];
             }
-
             register(username, email, password, idWorker) {
-                if (!username || !email || !idWorker || !password) {
-                    throw new Error('All fields are required!');
-                }
-                if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-                    throw new Error('Invalid email format!');
-                }
-                const userExists = this.users.some(user => user.email === email);
-                if (userExists) {
-                    throw new Error('User already exists!');
-                }
+                if (!username || !email || !idWorker || !password) throw new Error('Semua bidang wajib diisi!');
+                if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) throw new Error('Format email tidak valid!');
+                if (this.users.some(user => user.email === email)) throw new Error('Email sudah terdaftar!');
+                
                 const user = new User(username, email, password, idWorker);
                 this.users.push(user);
                 localStorage.setItem('users', JSON.stringify(this.users));
@@ -285,17 +144,16 @@
 
         const auth = new AuthSystem();
 
-        // Show Error
-        function showError(message) {
+        function showError(message, isSuccess = false) {
             const el = document.getElementById('error-message');
             el.textContent = message;
-            el.style.display = 'block';
-            setTimeout(() => el.style.display = 'none', 5000);
+            el.style.background = isSuccess ? 'rgba(16, 185, 129, 0.95)' : 'rgba(230, 57, 70, 0.95)';
+            el.classList.add('show');
+            setTimeout(() => el.classList.remove('show'), 4000);
         }
 
         document.addEventListener('DOMContentLoaded', () => {
             const form = document.getElementById('registerForm');
-
             form.addEventListener('submit', (e) => {
                 e.preventDefault();
                 const username = document.getElementById('regUsername').value.trim();
@@ -305,25 +163,18 @@
 
                 try {
                     auth.register(username, email, password, idWorker);
-                    showError('Registration successful! Redirecting to login...');
-                    setTimeout(() => window.location.href = '/login.html', 1500);
+                    showError('Pendaftaran berhasil! Mengalihkan ke login...', true);
+                    setTimeout(() => window.location.href = 'login.html', 1500);
                 } catch (error) {
                     showError(error.message);
                 }
             });
 
-            // Prevent undo/redo
             document.addEventListener('keydown', (e) => {
-                if ((e.ctrlKey || e.metaKey) && ['z', 'y', 'Z', 'Y'].includes(e.key)) {
-                    e.preventDefault();
-                }
+                if ((e.ctrlKey || e.metaKey) && ['z', 'y', 'Z', 'Y'].includes(e.key)) e.preventDefault();
             });
-
-            // Prevent back navigation
             history.replaceState(null, null, window.location.href);
-            window.addEventListener('popstate', () => {
-                history.replaceState(null, null, window.location.href);
-            });
+            window.addEventListener('popstate', () => history.replaceState(null, null, window.location.href));
         });
     </script>
 </body>
