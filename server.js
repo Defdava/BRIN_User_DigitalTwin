@@ -1,71 +1,47 @@
 import express from "express";
-import admin from "firebase-admin";
-import dotenv from "dotenv";
 import path from "path";
+import dotenv from "dotenv";
 import { fileURLToPath } from "url";
+import admin from "firebase-admin";
 
 dotenv.config();
+
+const app = express();
+const port = process.env.PORT || 1239;
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const app = express();
+app.use(express.json());
+app.use(express.static(path.join(__dirname, "public")));
 
-// ✅ Gunakan PORT dari environment (Vercel pakai dinamis) atau fallback ke 7550
-const port = process.env.PORT || 8900;
-
-// ✅ Firebase Admin Initialization
+// 🔧 Firebase Initialization
 try {
   const serviceAccount = {
     type: "service_account",
     project_id: process.env.FIREBASE_PROJECT_ID,
-    private_key: `-----BEGIN PRIVATE KEY-----
-<ISI_PRIVATE_KEY>
------END PRIVATE KEY-----
-`,
+    private_key: process.env.FIREBASE_PRIVATE_KEY?.replace(/\\n/g, "\n"),
     client_email: process.env.FIREBASE_CLIENT_EMAIL,
-    token_uri: "https://oauth2.googleapis.com/token",
   };
 
-  if (!admin.apps.length) {
-    admin.initializeApp({
-      credential: admin.credential.cert(serviceAccount),
-    });
-    console.log("✅ Firebase Admin initialized successfully!");
-  }
+  admin.initializeApp({
+    credential: admin.credential.cert(serviceAccount),
+    databaseURL: process.env.FIREBASE_DATABASE_URL,
+  });
+
+  console.log("✅ Firebase Admin initialized successfully!");
 } catch (error) {
   console.error("⚠️ Firebase Admin initialization failed:", error.message);
 }
 
-// ✅ Middleware
-app.use(express.json());
-app.use(express.static(path.join(__dirname, "public")));
-
-// ✅ Example API route
-app.get("/api/test", async (req, res) => {
-  try {
-    const db = admin.firestore();
-    const snapshot = await db.collection("test").get();
-    res.json({
-      message: "Firebase connected!",
-      documents: snapshot.docs.map((doc) => doc.data()),
-    });
-  } catch (err) {
-    res.status(500).json({ error: "Firebase connection failed", detail: err.message });
-  }
-});
-
-// ✅ Serve index.html
+// 🏠 Serve halaman utama
 app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "login.html"));
+  res.sendFile(path.join(__dirname, "public", "login.html"));
 });
 
-// ✅ Start server (hanya untuk lokal, Vercel handle otomatis)
+// Jalankan server (untuk local)
 if (process.env.NODE_ENV !== "production") {
-  app.listen(port, () => {
-    console.log(`🚀 Server running locally at http://localhost:${port}`);
-  });
+  app.listen(port, () => console.log(`🚀 Running at http://localhost:${port}`));
 }
 
-// ✅ Export Express app untuk Vercel
-export default app;
+export default app; // <-- penting untuk Vercel!
